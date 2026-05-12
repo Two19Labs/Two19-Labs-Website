@@ -3,41 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Two19 Labs | Web Development for Small Businesses</title>
-  <meta name="description" content="We build fast, secure, and beautiful websites specifically tailored to help small businesses grow their digital presence." />
-  
+  <title>Two19 Labs | Automation & AI for Small Businesses</title>
+  <meta name="description" content="Two19 Labs builds smart automations, AI-powered tools, and fast websites that help small businesses eliminate manual work and grow faster." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Outfit:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <link rel="icon" type="image/png" href="header.png" />
-  <link rel="stylesheet" href="style.css?v=1.2" />
+  <link rel="stylesheet" href="style.css?v=2.0" />
 </head>
 <body>
 
-  <!-- SVG filter for liquid glass distortion -->
-  <svg style="display:none" aria-hidden="true">
-    <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
-      <feTurbulence type="fractalNoise" baseFrequency="0.001 0.005" numOctaves="1" seed="17" result="turbulence"/>
-      <feComponentTransfer in="turbulence" result="mapped">
-        <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5"/>
-        <feFuncG type="gamma" amplitude="0" exponent="1" offset="0"/>
-        <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5"/>
-      </feComponentTransfer>
-      <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap"/>
-      <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100" lightingColor="white" result="specLight">
-        <fePointLight x="-200" y="-200" z="300"/>
-      </feSpecularLighting>
-      <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage"/>
-      <feDisplacementMap in="SourceGraphic" in2="softMap" scale="200" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-  </svg>
-
+  <!-- ========== NAV ========== -->
   <nav class="navbar">
-    <!-- Liquid glass layers -->
-    <div class="glass-blur-layer"></div>
-    <div class="glass-tint-layer"></div>
-    <div class="glass-highlight-layer"></div>
     <div class="nav-container">
       <a href="/" class="logo-img-wrap" aria-label="Two19 Labs">
         <img src="logo.png" alt="Two19 Labs" class="logo-img" />
@@ -48,7 +27,7 @@
         <li><a href="/services">SERVICES</a></li>
       </ul>
       <div class="desktop-cta">
-        <a href="tel:9834722416" class="btn btn-outline nav-btn">Let's talk</a>
+        <a href="tel:9834722416" class="btn btn-cyan nav-btn">Let's talk</a>
       </div>
       <button class="hamburger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -56,7 +35,7 @@
     </div>
   </nav>
 
-  <!-- Mobile menu overlay -->
+  <!-- Mobile menu -->
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-menu-close" aria-label="Close menu">&times;</button>
     <ul>
@@ -69,75 +48,273 @@
   <div class="mobile-menu-backdrop" id="mobileMenuBackdrop"></div>
 
   <main style="padding-top: 50px;">
-    <!-- HERO SECTION -->
-    <section class="hero" id="home">
-      <div class="hero-left">
-        <span class="eyebrow">Two19 Labs</span>
-        <h1 class="hero-title">
-          <span class="title-bold">Custom Websites</span><br />
-          <span class="title-serif">For Small Businesses</span>
-        </h1>
-        <p class="hero-description">We build fast, secure, and beautiful websites tailored specifically to help local small businesses grow their customer base and digital presence.</p>
-      </div>
-      <div class="hero-right">
-        <div class="hero-image-grid">
-          <img src="hero_laptop_mockup.png" alt="Laptop showing web design" class="img-top fade-in delay-1" />
-        </div>
-      </div>
-    </section>
 
-    <!-- WHY CHOOSE US -->
-    <section class="why-choose-us" id="about">
-      <div class="wcu-top">
-        <span class="section-label">Why Choose Us</span>
-      </div>
-      <h2 class="wcu-title fade-in">We blend modern technology with clean design to build fast, affordable websites that empower small businesses.</h2>
-      
-      <div class="wcu-content">
-          <div class="wcu-features">
-            <div class="feature-card fade-in delay-2">
-              <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div class="feature-text">
-                <h4>Performance Driven</h4>
-                <p>We craft lightning-fast websites deeply rooted in technical excellence, helping you rank higher and convert more visitors.</p>
-              </div>
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="home">
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <div class="hero-glow" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <div class="hero-left fade-in">
+          <span class="eyebrow mono">_Two19 Labs / Automation Studio</span>
+          <h1 class="hero-title">
+            <span class="title-bold">We Build Automations</span><br />
+            <span class="title-serif">That Run Your Business</span>
+          </h1>
+          <p class="hero-description">From AI workflows to web systems — Two19 Labs helps small businesses eliminate manual work, move faster, and grow without adding headcount.</p>
+          <div class="hero-ctas">
+            <a href="/services" class="btn btn-cyan btn-lg">See What We Do</a>
+            <a href="tel:9834722416" class="btn btn-ghost btn-lg">Let's Talk</a>
+          </div>
+        </div>
+
+        <div class="hero-right fade-in delay-2">
+          <div class="hero-visual">
+            <!-- Animated circuit / robot SVG -->
+            <svg class="circuit-svg" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Outer ring -->
+              <circle cx="210" cy="210" r="180" stroke="#00c8ff" stroke-width="1" stroke-dasharray="6 10" opacity="0.25" class="spin-slow"/>
+              <circle cx="210" cy="210" r="140" stroke="#7c3aed" stroke-width="1" stroke-dasharray="4 14" opacity="0.2" class="spin-rev"/>
+              <!-- Core hexagon -->
+              <polygon points="210,120 285,165 285,255 210,300 135,255 135,165" stroke="#00c8ff" stroke-width="1.5" fill="none" opacity="0.6"/>
+              <polygon points="210,148 261,177 261,237 210,266 159,237 159,177" stroke="#7c3aed" stroke-width="1" fill="none" opacity="0.4"/>
+              <!-- Center bot face -->
+              <rect x="180" y="178" width="60" height="50" rx="6" fill="#0f1729" stroke="#00c8ff" stroke-width="1.5"/>
+              <!-- Eyes -->
+              <rect x="192" y="190" width="10" height="10" rx="2" fill="#00c8ff" class="blink"/>
+              <rect x="218" y="190" width="10" height="10" rx="2" fill="#00c8ff" class="blink"/>
+              <!-- Mouth bar -->
+              <rect x="193" y="208" width="34" height="4" rx="2" fill="#7c3aed" opacity="0.8"/>
+              <!-- Antenna -->
+              <line x1="210" y1="178" x2="210" y2="155" stroke="#00c8ff" stroke-width="1.5"/>
+              <circle cx="210" cy="150" r="5" fill="#00c8ff" class="pulse-dot"/>
+              <!-- Circuit lines -->
+              <line x1="135" y1="210" x2="80" y2="210" stroke="#00c8ff" stroke-width="1" opacity="0.4"/>
+              <circle cx="80" cy="210" r="4" fill="#00c8ff" opacity="0.5"/>
+              <line x1="80" y1="210" x2="80" y2="170" stroke="#00c8ff" stroke-width="1" opacity="0.3"/>
+              <circle cx="80" cy="170" r="3" fill="#00c8ff" opacity="0.4"/>
+
+              <line x1="285" y1="210" x2="340" y2="210" stroke="#7c3aed" stroke-width="1" opacity="0.4"/>
+              <circle cx="340" cy="210" r="4" fill="#7c3aed" opacity="0.5"/>
+              <line x1="340" y1="210" x2="340" y2="250" stroke="#7c3aed" stroke-width="1" opacity="0.3"/>
+              <circle cx="340" cy="250" r="3" fill="#7c3aed" opacity="0.4"/>
+
+              <line x1="210" y1="300" x2="210" y2="355" stroke="#00c8ff" stroke-width="1" opacity="0.4"/>
+              <circle cx="210" cy="355" r="4" fill="#00c8ff" opacity="0.5"/>
+              <line x1="210" y1="355" x2="260" y2="355" stroke="#00c8ff" stroke-width="1" opacity="0.3"/>
+              <circle cx="260" cy="355" r="3" fill="#00c8ff" opacity="0.4"/>
+
+              <!-- Corner nodes -->
+              <circle cx="210" cy="75" r="5" fill="none" stroke="#00c8ff" stroke-width="1.5" opacity="0.5"/>
+              <circle cx="345" cy="152" r="5" fill="none" stroke="#7c3aed" stroke-width="1.5" opacity="0.5"/>
+              <circle cx="345" cy="268" r="5" fill="none" stroke="#7c3aed" stroke-width="1.5" opacity="0.5"/>
+              <circle cx="75" cy="152" r="5" fill="none" stroke="#00c8ff" stroke-width="1.5" opacity="0.5"/>
+              <circle cx="75" cy="268" r="5" fill="none" stroke="#00c8ff" stroke-width="1.5" opacity="0.5"/>
+              <!-- Data flow dots -->
+              <circle cx="210" cy="210" r="3" fill="#00c8ff" opacity="0" class="data-ping"/>
+            </svg>
+            <!-- Floating stat pills -->
+            <div class="stat-pill pill-1 fade-in delay-3">
+              <span class="stat-dot"></span>
+              <span>Automations live</span>
+              <strong>24/7</strong>
             </div>
-            <div class="feature-card fade-in delay-3">
-              <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div class="feature-text">
-                <h4>Mobile Optimized</h4>
-                <p>Responsive across all devices, ensuring your customers have a seamless experience whether they are on their phone or desktop.</p>
-              </div>
+            <div class="stat-pill pill-2 fade-in delay-4">
+              <span class="stat-dot violet"></span>
+              <span>Avg. setup time</span>
+              <strong>7 days</strong>
             </div>
           </div>
         </div>
+      </div>
     </section>
 
-    <!-- SERVICES -->
+    <!-- ========== WHAT WE DO ========== -->
+    <section class="what-we-do" id="about">
+      <div class="section-tag fade-in"><span class="mono">_01 / what we do</span></div>
+      <h2 class="section-title fade-in">One studio.<br><span class="text-cyan">Three superpowers.</span></h2>
+      <div class="wwd-grid">
+        <div class="wwd-card fade-in delay-1">
+          <div class="wwd-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#00c8ff" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 17l10 5 10-5" stroke="#00c8ff" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 12l10 5 10-5" stroke="#00c8ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </div>
+          <span class="wwd-label mono">_automation</span>
+          <h3>Business Automation</h3>
+          <p>WhatsApp bots, email sequences, booking flows, report pipelines, lead routing — we automate the repetitive work that drains your team every day.</p>
+          <ul class="wwd-list">
+            <li>WhatsApp & Email bots</li>
+            <li>Form-to-sheet workflows</li>
+            <li>Auto follow-up sequences</li>
+            <li>Report & invoice automation</li>
+          </ul>
+        </div>
+        <div class="wwd-card featured fade-in delay-2">
+          <div class="wwd-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="#00c8ff" stroke-width="1.5"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" stroke="#00c8ff" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <span class="wwd-label mono">_ai</span>
+          <h3>AI Integration</h3>
+          <p>We embed AI directly into your business — custom chatbots, smart dashboards, document processing, and AI assistants trained on your data.</p>
+          <ul class="wwd-list">
+            <li>Custom AI chatbots</li>
+            <li>Document & data processing</li>
+            <li>Smart dashboards</li>
+            <li>AI-powered lead scoring</li>
+          </ul>
+          <span class="featured-badge">Most Popular</span>
+        </div>
+        <div class="wwd-card fade-in delay-3">
+          <div class="wwd-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#00c8ff" stroke-width="1.5"/><path d="M3 9h18M9 21V9" stroke="#00c8ff" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <span class="wwd-label mono">_web</span>
+          <h3>Web Development</h3>
+          <p>Fast, modern websites and web apps built to integrate with your automations — not just pretty pages, but systems that work while you sleep.</p>
+          <ul class="wwd-list">
+            <li>Custom websites & landing pages</li>
+            <li>Web apps & dashboards</li>
+            <li>Automation-connected portals</li>
+            <li>SEO & performance tuned</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== HOW IT WORKS ========== -->
+    <section class="how-it-works" id="process">
+      <div class="section-tag fade-in"><span class="mono">_02 / process</span></div>
+      <h2 class="section-title fade-in">Simple process.<br><span class="text-cyan">Powerful results.</span></h2>
+      <div class="hiw-steps">
+        <div class="hiw-step fade-in delay-1">
+          <div class="step-number mono">01</div>
+          <div class="step-connector" aria-hidden="true"></div>
+          <h3>Discover</h3>
+          <p>We map your current workflow, find the bottlenecks, and identify exactly where automation or AI will have the biggest impact for your business.</p>
+        </div>
+        <div class="hiw-step fade-in delay-2">
+          <div class="step-number mono">02</div>
+          <div class="step-connector" aria-hidden="true"></div>
+          <h3>Build</h3>
+          <p>Our team designs and builds the automation or web system — clean, tested, and built to scale with you. Most projects are live within 7–14 days.</p>
+        </div>
+        <div class="hiw-step fade-in delay-3">
+          <div class="step-number mono">03</div>
+          <div class="step-connector last" aria-hidden="true"></div>
+          <h3>Automate</h3>
+          <p>Your system runs 24/7, handling the repetitive work automatically. We monitor, maintain, and improve it as your business grows.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SERVICES ========== -->
     <section class="services" id="services">
+      <div class="section-tag fade-in"><span class="mono">_03 / services</span></div>
       <div class="services-header">
-        <h2 class="services-title">Everything you need<br>to launch online</h2>
-        <a href="/services" class="btn btn-outline">Services</a>
+        <h2 class="services-title fade-in">Everything you need<br>to work smarter</h2>
       </div>
       <div class="services-accordion">
-        
+
         <div class="accordion-item active fade-in delay-1">
           <div class="accordion-header">
-            <h3>Custom Web Development</h3>
+            <h3>Business Automation</h3>
+            <span class="accordion-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
           </div>
           <div class="accordion-content">
             <div class="accordion-details">
-              <h4>Technical Strategy</h4>
+              <h4>Eliminate Manual Work</h4>
+              <p class="accordion-desc">We automate the tasks your team does on repeat — so you can focus on growing, not operating.</p>
+              <div class="accordion-tags">
+                <span class="tag">WhatsApp Bots</span>
+                <span class="tag">Email Sequences</span>
+                <span class="tag">Lead Pipelines</span>
+                <span class="tag">Report Automation</span>
+                <span class="tag">Booking Flows</span>
+              </div>
+              <a href="tel:9834722416" class="btn btn-cyan">Start Automating</a>
+            </div>
+            <div class="accordion-visual">
+              <div class="flow-diagram">
+                <div class="flow-node trigger">
+                  <span class="mono">trigger</span>
+                  <p>New Lead Form</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-node action">
+                  <span class="mono">action</span>
+                  <p>WhatsApp Message</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-node action">
+                  <span class="mono">action</span>
+                  <p>Add to Sheet</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-node output">
+                  <span class="mono">output</span>
+                  <p>Follow-up Email</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item fade-in delay-2">
+          <div class="accordion-header">
+            <h3>AI Integration</h3>
+            <span class="accordion-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-details">
+              <h4>AI Built for Your Business</h4>
+              <p class="accordion-desc">Custom AI tools trained on your data — not generic. From chatbots that know your products to dashboards that surface real insights.</p>
+              <div class="accordion-tags">
+                <span class="tag">Custom Chatbots</span>
+                <span class="tag">AI Assistants</span>
+                <span class="tag">Document Processing</span>
+                <span class="tag">Smart Dashboards</span>
+                <span class="tag">Lead Scoring</span>
+              </div>
+              <a href="tel:9834722416" class="btn btn-cyan">Explore AI Options</a>
+            </div>
+            <div class="accordion-visual">
+              <div class="ai-visual">
+                <div class="ai-bubble user">How do I track my order?</div>
+                <div class="ai-bubble bot">
+                  <span class="bot-tag mono">AI</span>
+                  Your order #2847 is out for delivery and will arrive by 4 PM today. Would you like a live map link?
+                </div>
+                <div class="ai-bubble user">Yes please!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item fade-in delay-3">
+          <div class="accordion-header">
+            <h3>Web Development</h3>
+            <span class="accordion-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-details">
+              <h4>Websites That Work While You Sleep</h4>
+              <p class="accordion-desc">Fast, modern, mobile-first websites built to connect with your automations — not just a pretty face, but a system that converts and operates.</p>
               <div class="accordion-tags">
                 <span class="tag">HTML/CSS/JS</span>
                 <span class="tag">Fast Loading</span>
-                <span class="tag">Hosting</span>
-                <span class="tag">Security</span>
+                <span class="tag">Mobile First</span>
+                <span class="tag">SEO Ready</span>
+                <span class="tag">Automation Connected</span>
               </div>
-              <a href="tel:9834722416" class="btn btn-dark">Start Building</a>
+              <a href="https://darkbeancoffee.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-cyan">View Demo</a>
             </div>
-            <div class="accordion-image mockup-container">
-              <span class="demo-label">Demo Website</span>
+            <div class="accordion-visual mockup-container">
+              <span class="demo-label mono">_demo / dark bean coffee</span>
               <a href="https://darkbeancoffee.vercel.app" target="_blank" rel="noopener noreferrer" class="mac-mockup-link">
                 <div class="mac-mockup">
                   <div class="mac-topbar">
@@ -154,23 +331,89 @@
           </div>
         </div>
 
+        <div class="accordion-item fade-in delay-4">
+          <div class="accordion-header">
+            <h3>Full-Stack Bundle <span class="tag-inline">Flagship</span></h3>
+            <span class="accordion-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-details">
+              <h4>Website + Automation + AI — All In One</h4>
+              <p class="accordion-desc">The complete package: a high-converting website wired into smart automations and AI tools. Your business, fully systemised.</p>
+              <div class="accordion-tags">
+                <span class="tag">Custom Website</span>
+                <span class="tag">Lead Automation</span>
+                <span class="tag">AI Chatbot</span>
+                <span class="tag">Dashboard</span>
+                <span class="tag">Ongoing Support</span>
+              </div>
+              <a href="tel:9834722416" class="btn btn-cyan">Get the Bundle</a>
+            </div>
+            <div class="accordion-visual bundle-visual">
+              <div class="bundle-items">
+                <div class="bundle-item"><span class="mono">01</span> Custom Website</div>
+                <div class="bundle-item"><span class="mono">02</span> Lead Automation Pipeline</div>
+                <div class="bundle-item"><span class="mono">03</span> AI Chatbot / Assistant</div>
+                <div class="bundle-item"><span class="mono">04</span> Real-time Dashboard</div>
+                <div class="bundle-item"><span class="mono">05</span> Ongoing Maintenance</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
+    <!-- ========== WHY TWO19 LABS ========== -->
+    <section class="why-us" id="why">
+      <div class="section-tag fade-in"><span class="mono">_04 / why us</span></div>
+      <h2 class="section-title fade-in">Built for small teams.<br><span class="text-cyan">Engineered for results.</span></h2>
+      <div class="why-grid">
+        <div class="why-card fade-in delay-1">
+          <div class="why-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#00c8ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </div>
+          <h4>Fast Turnaround</h4>
+          <p>Most automations and websites go live within 7–14 days. No bloated timelines, no unnecessary meetings.</p>
+        </div>
+        <div class="why-card fade-in delay-2">
+          <div class="why-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#00c8ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </div>
+          <h4>No Lock-In</h4>
+          <p>You own everything we build — the code, the workflows, the automations. We don't hold your systems hostage.</p>
+        </div>
+        <div class="why-card fade-in delay-3">
+          <div class="why-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="#00c8ff" stroke-width="1.5"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" stroke="#00c8ff" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h4>AI-Native</h4>
+          <p>We build with modern AI tools — Claude, GPT, and others — not outdated scripts. Your automations are genuinely intelligent.</p>
+        </div>
+        <div class="why-card fade-in delay-4">
+          <div class="why-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#00c8ff" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="#00c8ff" stroke-width="1.5"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#00c8ff" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h4>Built for Small Teams</h4>
+          <p>No enterprise bloat, no inflated retainers. We work with lean teams and deliver systems that punch above their weight.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS ========== -->
     <section class="testimonials" id="testimonials">
       <div class="testimonials-inner">
-        <!-- Left: heading + dots -->
         <div class="test-left fade-in">
           <span class="test-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-            Trusted by small businesses
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+            Trusted by businesses
           </span>
           <h2 class="test-main-title">Loved by<br>our clients.</h2>
-          <p class="test-subtitle">Don't just take our word for it. See what small business owners across the country have to say about Two19 Labs.</p>
+          <p class="test-subtitle">Real results from real businesses that made the switch to smarter operations with Two19 Labs.</p>
           <div class="test-dots" id="testDots"></div>
         </div>
-        <!-- Right: animated cards -->
         <div class="test-right">
           <div id="testCards"></div>
           <div class="test-deco test-deco-bl"></div>
@@ -179,46 +422,57 @@
       </div>
     </section>
 
-
-    <!-- FAQ -->
+    <!-- ========== FAQ ========== -->
     <section class="faq" id="pages">
       <div class="faq-header">
-        <h2 class="faq-title">Frequently<br>Asked Questions</h2>
+        <div>
+          <div class="section-tag fade-in"><span class="mono">_05 / faq</span></div>
+          <h2 class="faq-title fade-in">Frequently<br>Asked Questions</h2>
+        </div>
         <div class="faq-right">
-          <p>If you have any further questions please contact us.</p>
-          <a href="tel:9834722416" class="btn btn-dark">Ask A Question</a>
+          <p>Have more questions? We're just a call away.</p>
+          <a href="tel:9834722416" class="btn btn-cyan">Ask A Question</a>
         </div>
       </div>
-      
+
       <div class="faq-grid">
         <div class="faq-item fade-in delay-1">
-          <h4>Do you do marketing or SEO?</h4>
-          <p>No, we strictly specialize in web development. By focusing 100% of our energy exclusively on building incredible, high-converting websites, we deliver unmatched technical quality without distractions.</p>
+          <h4>What kind of automations do you build?</h4>
+          <p>We build anything from WhatsApp bots and email sequences to lead pipelines, invoice automation, booking flows, and custom AI assistants. If it's repetitive, we can automate it.</p>
         </div>
         <div class="faq-item fade-in delay-2">
-          <h4>What is the process?</h4>
-          <p>We capture your brand identity, plan the technical execution, and build a totally custom, blazing-fast website deployed directly onto live servers.</p>
+          <h4>Do I need to be technical?</h4>
+          <p>Not at all. We handle the full build and explain everything in plain language. You describe the problem, we engineer the solution.</p>
         </div>
         <div class="faq-item fade-in delay-3">
-          <h4>Why choose Two19 Labs?</h4>
-          <p>Because web development is absolutely all we do. We don't inflate invoices with broad marketing packages or consulting fees. We just code fast, beautiful websites.</p>
+          <h4>How long does an automation take?</h4>
+          <p>Most automations are live within 7–14 days. Complex AI integrations or full-stack bundles may take 3–4 weeks. We'll give you a clear timeline upfront.</p>
         </div>
         <div class="faq-item fade-in delay-4">
-          <h4>How do we start?</h4>
-          <p>Reach out to us directly by phone, and our lead developer will coordinate an immediate discovery chat with you to map out your new website.</p>
+          <h4>Do you also build websites?</h4>
+          <p>Yes — and we build them to connect with your automations. A contact form that triggers a WhatsApp message. A booking page that auto-schedules and confirms. Systems, not just pages.</p>
+        </div>
+        <div class="faq-item fade-in delay-1">
+          <h4>What does it cost?</h4>
+          <p>Pricing depends on the complexity of what you need. We offer fixed-scope projects and ongoing support plans. Reach out and we'll give you a clear quote — no surprise invoices.</p>
+        </div>
+        <div class="faq-item fade-in delay-2">
+          <h4>How do we get started?</h4>
+          <p>Call or WhatsApp us directly. Our lead developer will jump on a quick discovery call to map out your workflow and recommend the right solution.</p>
         </div>
       </div>
     </section>
 
   </main>
 
+  <!-- ========== FOOTER ========== -->
   <footer id="contact">
     <div class="footer-container">
       <div class="footer-left">
-        <h2>Don't miss, do it right.</h2>
+        <h2>Work smarter.<br>Ship faster.</h2>
         <address>
           Two19 Labs<br>
-          Serving Small Businesses Worldwide
+          Automation & AI Studio
         </address>
         <div class="footer-contact-info">
           <p>Contact Us</p>
@@ -238,20 +492,27 @@
         <div class="footer-col">
           <h4>Legal</h4>
           <ul>
-             <li><a href="terms.html">Terms &amp; Conditions</a></li>
-             <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms &amp; Conditions</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Socials</h4>
           <ul>
-             <li><a href="#">Instagram</a></li>
-             <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">LinkedIn</a></li>
           </ul>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- WhatsApp FAB -->
+  <a href="https://wa.me/919834722416" class="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
 
   <script src="script.js"></script>
 </body>

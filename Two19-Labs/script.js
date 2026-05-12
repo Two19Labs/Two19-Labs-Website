@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "Arjun Sharma",
       role: "Owner",
       company: "The Spice Kettle",
-      content: "I never thought my small cafe needed a website until I met the team at Two19 Labs. They built a beautiful site for The Spice Kettle that has completely changed how we handle orders. It's simple for my customers to use and looks incredibly professional. Since the launch, our weekend takeaway orders have nearly doubled. Thank you, Two19 Labs!",
+      content: "Two19 Labs set up an automated WhatsApp flow for us that sends order confirmations and follow-ups without anyone lifting a finger. Our weekend orders went up nearly 40% just because we stopped losing leads to slow response times. Absolutely brilliant work.",
       rating: 5,
       avatar: "arjun.png"
     },
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "Priya Iyer",
       role: "Owner",
       company: "Malabar Junction",
-      content: "The best part about working with Two19 Labs was how they understood the vibe of Malabar Junction. They didn't just give me a template; they created a digital home for my restaurant that feels authentic. They were very patient with my technical questions and finished everything right on time. If you are a local business owner, these are the people to trust.",
+      content: "They built us a website and connected it to an automation that captures enquiries, sends a WhatsApp message instantly, and adds everything to a Google Sheet. What used to take my staff an hour a day now runs itself. I can't imagine going back.",
       rating: 5,
       avatar: "priya.png"
     },
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "Vikram Singh",
       role: "Owner",
       company: "Royal Tandoor Express",
-      content: "Reliability is hard to find, but Two19 Labs delivered exactly what they promised for Royal Tandoor Express. The website is lightning-fast on mobile phones, which is where most of my customers order from. Their support after the site went live has been excellent—they are always just a message away. Truly a 5-star experience for any small business!",
+      content: "The AI chatbot Two19 Labs built for us handles 80% of customer questions on its own — menu, hours, bookings. My staff can focus on the actual work. The team was fast, professional, and always available. Best investment I've made for the business.",
       rating: 5,
       avatar: "vikram.png"
     },
