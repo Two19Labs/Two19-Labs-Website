@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | Two19 Labs</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Standard internal page styling */
+    .legal-header {
+      padding: 180px 5% 80px 5%;
+      background: var(--bg-color);
+      text-align: center;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .legal-header h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 20px;
+    }
+    .legal-header p {
+      color: var(--text-gray);
+      font-size: 1.1rem;
+    }
+    .legal-content {
+      padding: 80px 5% 120px 5%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .legal-content h2 {
+      font-size: 2rem;
+      margin-top: 60px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 10px;
+    }
+    .legal-content h3 {
+      font-size: 1.3rem;
+      margin-top: 30px;
+      margin-bottom: 16px;
+    }
+    .legal-content p {
+      margin-bottom: 20px;
+      color: var(--text-gray);
+      line-height: 1.8;
+    }
+    .legal-content ul {
+      margin-bottom: 30px;
+      padding-left: 20px;
+      color: var(--text-gray);
+      line-height: 1.8;
+    }
+    .legal-content li {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <svg display="none">
+    <filter id="liquid-distortion">
+      <feTurbulence type="fractalNoise" baseFrequency="0.001 0.005" numOctaves="1" seed="17" result="turbulence"/>
+      <feComponentTransfer in="turbulence" result="mapped">
+        <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5"/>
+        <feFuncG type="gamma" amplitude="0" exponent="1" offset="0"/>
+        <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5"/>
+      </feComponentTransfer>
+      <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap"/>
+      <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100" lightingColor="white" result="specLight">
+        <fePointLight x="-200" y="-200" z="300"/>
+      </feSpecularLighting>
+      <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage"/>
+      <feDisplacementMap in="SourceGraphic" in2="softMap" scale="200" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+
+  <nav class="navbar">
+    <div class="glass-blur-layer"></div>
+    <div class="glass-tint-layer"></div>
+    <div class="glass-highlight-layer"></div>
+    <div class="nav-container">
+      <a href="index.html#home" class="logo-img-wrap" aria-label="Two19 Labs">
+        <img src="logo.png" alt="Two19 Labs" class="logo-img" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#home">HOME</a></li>
+        <li><a href="index.html#about">ABOUT</a></li>
+        <li><a href="index.html#services">SERVICES</a></li>
+      </ul>
+      <div class="desktop-cta">
+        <a href="tel:9834722416" class="btn btn-outline nav-btn">Let's talk</a>
+      </div>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" aria-label="Close menu">&times;</button>
+    <ul>
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="tel:9834722416">Let's talk</a></li>
+    </ul>
+  </div>
+  <div class="mobile-menu-backdrop" id="mobileMenuBackdrop"></div>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <section class="legal-header">
+      <div class="container">
+        <h1>Privacy Policy</h1>
+        <p>Last Updated: March 2026</p>
+      </div>
+    </section>
+
+    <section class="legal-content">
+      <p>Two19 Labs ("we," "us," or "our") is strictly committed to protecting your privacy and security. As a specialized web development agency, we take the handling of our clients' raw data, brand assets, and digital infrastructure extremely seriously. This Privacy Policy details how we collect, use, and protect your information.</p>
+      
+      <h2>1. Information We Collect</h2>
+      <p>We only collect the absolute minimum information required to successfully consult, design, and deploy your custom web presence.</p>
+      <ul>
+        <li><strong>Contact Information:</strong> Names, email addresses, and phone numbers submitted via direct communication or structural proposal forms.</li>
+        <li><strong>Project &amp; Brand Assets:</strong> Internal copy, high-resolution logos, brand guidelines, or sensitive internal architectural data specifically provided to us during the website's development lifecycle.</li>
+        <li><strong>Technical Information:</strong> Temporary access credentials (e.g., domain registrar access keys or primary hosting environment portals) necessary exclusively for the final deployment of your web application.</li>
+      </ul>
+
+      <h2>2. How We Use the Information</h2>
+      <p>Your information is weaponized solely to build you a faster, beautiful website. We use it to:</p>
+      <ul>
+        <li>Determine and execute the mutually agreed upon structural layout and technical SOW (Scope of Work).</li>
+        <li>Provide direct customer support and handle necessary account-level invoicing and payments.</li>
+        <li>Authenticate technical environments upon site launch and migration to live servers.</li>
+      </ul>
+      <p><strong>Strict Privacy Policy: We do not and will absolutely never sell, rent, or broker any client data, business materials, or web traffic statistics to outside marketing entities.</strong></p>
+
+      <h2>3. Third-Party Disclosures &amp; Infrastructure</h2>
+      <p>While we build custom code, live websites inherently require third-party systems to operate efficiently.</p>
+      <ul>
+        <li><strong>Hosting Services:</strong> Core data and files are placed securely on highly-reputable, industry-standard hosting environments natively trusted by modern developers (e.g., AWS, Vercel, or standardized CMS providers).</li>
+        <li><strong>Service Providers:</strong> We utilize encrypted, vetted third-party payment gateways to strictly process invoicing safely. Two19 Labs processes no raw credit card integers on our own local servers.</li>
+        <li><strong>Legal Compliance:</strong> We may only disclose internal communications if stringently required by law or a recognized legal subpoena.</li>
+      </ul>
+
+      <h2>4. Data Retention &amp; Security</h2>
+      <p>We deploy strict internal protocols regarding how project data is treated post-launch.</p>
+      <ul>
+        <li>Files securely mapped for your structural deployment are archived temporarily incase of crash recovery demands upon our 30-day bug warranty period.</li>
+        <li>Client logins and passwords passed to Two19 Labs for domain administration are routinely wiped from our internal development registries following explicit finalization of the project.</li>
+      </ul>
+
+      <h2>5. Use of Cookies</h2>
+      <p>Our promotional website (the site you are currently navigating) may utilize minimal cookies merely to analyze aggregate user traffic patterns to internally improve our own site logic and rendering speeds. You have full capacity to disable these safely from within your browser settings.</p>
+
+      <h2>6. Your Technical Privacy Rights</h2>
+      <p>You inherently retain the right to formally request an archive drop of all data files submitted to us, or conversely, request a full systematic wipe and deletion of any raw media associated with your brand hosted within our structural environments following project sign-off.</p>
+
+      <h2>7. Revisions and Contact</h2>
+      <p>We may update this Privacy Policy dynamically as our development methodologies evolve. For any pressing questions regarding our digital privacy standards, please reach out to our team directly.</p>
+      <p>Email: <a href="mailto:two19labs@gmail.com">two19labs@gmail.com</a><br>Phone: <a href="tel:9834722416">+91 9834722416</a></p>
+    </section>
+
+  </main>
+
+  <footer id="contact">
+    <div class="footer-container">
+      <div class="footer-left">
+        <h2>Don't miss, do it right.</h2>
+        <address>
+          Two19 Labs<br>
+          Serving Small Businesses Worldwide
+        </address>
+        <div class="footer-contact-info">
+          <p>Contact Us</p>
+          <a href="mailto:two19labs@gmail.com">two19labs@gmail.com</a>
+          <a href="tel:+919834722416">+91 9834722416</a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <div class="footer-col">
+          <h4>Links</h4>
+          <ul>
+            <li><a href="index.html#home">Overview</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#services">Services</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+             <li><a href="terms.html">Terms &amp; Conditions</a></li>
+             <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Socials</h4>
+          <ul>
+             <li><a href="#">Instagram</a></li>
+             <li><a href="#">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

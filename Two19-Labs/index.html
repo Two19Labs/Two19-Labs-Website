@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Two19 Labs | Web Development for Small Businesses</title>
+  <meta name="description" content="We build fast, secure, and beautiful websites specifically tailored to help small businesses grow their digital presence." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="icon" type="image/png" href="header.png" />
+  <link rel="stylesheet" href="style.css?v=1.2" />
+</head>
+<body>
+
+  <!-- SVG filter for liquid glass distortion -->
+  <svg style="display:none" aria-hidden="true">
+    <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
+      <feTurbulence type="fractalNoise" baseFrequency="0.001 0.005" numOctaves="1" seed="17" result="turbulence"/>
+      <feComponentTransfer in="turbulence" result="mapped">
+        <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5"/>
+        <feFuncG type="gamma" amplitude="0" exponent="1" offset="0"/>
+        <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5"/>
+      </feComponentTransfer>
+      <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap"/>
+      <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100" lightingColor="white" result="specLight">
+        <fePointLight x="-200" y="-200" z="300"/>
+      </feSpecularLighting>
+      <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage"/>
+      <feDisplacementMap in="SourceGraphic" in2="softMap" scale="200" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+
+  <nav class="navbar">
+    <!-- Liquid glass layers -->
+    <div class="glass-blur-layer"></div>
+    <div class="glass-tint-layer"></div>
+    <div class="glass-highlight-layer"></div>
+    <div class="nav-container">
+      <a href="/" class="logo-img-wrap" aria-label="Two19 Labs">
+        <img src="logo.png" alt="Two19 Labs" class="logo-img" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">HOME</a></li>
+        <li><a href="/about">ABOUT</a></li>
+        <li><a href="/services">SERVICES</a></li>
+      </ul>
+      <div class="desktop-cta">
+        <a href="tel:9834722416" class="btn btn-outline nav-btn">Let's talk</a>
+      </div>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" aria-label="Close menu">&times;</button>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="tel:9834722416">Let's talk</a></li>
+    </ul>
+  </div>
+  <div class="mobile-menu-backdrop" id="mobileMenuBackdrop"></div>
+
+  <main style="padding-top: 50px;">
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+      <div class="hero-left">
+        <span class="eyebrow">Two19 Labs</span>
+        <h1 class="hero-title">
+          <span class="title-bold">Custom Websites</span><br />
+          <span class="title-serif">For Small Businesses</span>
+        </h1>
+        <p class="hero-description">We build fast, secure, and beautiful websites tailored specifically to help local small businesses grow their customer base and digital presence.</p>
+      </div>
+      <div class="hero-right">
+        <div class="hero-image-grid">
+          <img src="hero_laptop_mockup.png" alt="Laptop showing web design" class="img-top fade-in delay-1" />
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="why-choose-us" id="about">
+      <div class="wcu-top">
+        <span class="section-label">Why Choose Us</span>
+      </div>
+      <h2 class="wcu-title fade-in">We blend modern technology with clean design to build fast, affordable websites that empower small businesses.</h2>
+      
+      <div class="wcu-content">
+          <div class="wcu-features">
+            <div class="feature-card fade-in delay-2">
+              <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="feature-text">
+                <h4>Performance Driven</h4>
+                <p>We craft lightning-fast websites deeply rooted in technical excellence, helping you rank higher and convert more visitors.</p>
+              </div>
+            </div>
+            <div class="feature-card fade-in delay-3">
+              <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="feature-text">
+                <h4>Mobile Optimized</h4>
+                <p>Responsive across all devices, ensuring your customers have a seamless experience whether they are on their phone or desktop.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+      <div class="services-header">
+        <h2 class="services-title">Everything you need<br>to launch online</h2>
+        <a href="/services" class="btn btn-outline">Services</a>
+      </div>
+      <div class="services-accordion">
+        
+        <div class="accordion-item active fade-in delay-1">
+          <div class="accordion-header">
+            <h3>Custom Web Development</h3>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-details">
+              <h4>Technical Strategy</h4>
+              <div class="accordion-tags">
+                <span class="tag">HTML/CSS/JS</span>
+                <span class="tag">Fast Loading</span>
+                <span class="tag">Hosting</span>
+                <span class="tag">Security</span>
+              </div>
+              <a href="tel:9834722416" class="btn btn-dark">Start Building</a>
+            </div>
+            <div class="accordion-image mockup-container">
+              <span class="demo-label">Demo Website</span>
+              <a href="https://darkbeancoffee.vercel.app" target="_blank" rel="noopener noreferrer" class="mac-mockup-link">
+                <div class="mac-mockup">
+                  <div class="mac-topbar">
+                    <span class="mac-dot red"></span>
+                    <span class="mac-dot yellow"></span>
+                    <span class="mac-dot green"></span>
+                  </div>
+                  <div class="mac-screen">
+                    <img src="dark-bean-screenshot.png" alt="Dark Bean Coffee Website" />
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonials">
+      <div class="testimonials-inner">
+        <!-- Left: heading + dots -->
+        <div class="test-left fade-in">
+          <span class="test-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+            Trusted by small businesses
+          </span>
+          <h2 class="test-main-title">Loved by<br>our clients.</h2>
+          <p class="test-subtitle">Don't just take our word for it. See what small business owners across the country have to say about Two19 Labs.</p>
+          <div class="test-dots" id="testDots"></div>
+        </div>
+        <!-- Right: animated cards -->
+        <div class="test-right">
+          <div id="testCards"></div>
+          <div class="test-deco test-deco-bl"></div>
+          <div class="test-deco test-deco-tr"></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- FAQ -->
+    <section class="faq" id="pages">
+      <div class="faq-header">
+        <h2 class="faq-title">Frequently<br>Asked Questions</h2>
+        <div class="faq-right">
+          <p>If you have any further questions please contact us.</p>
+          <a href="tel:9834722416" class="btn btn-dark">Ask A Question</a>
+        </div>
+      </div>
+      
+      <div class="faq-grid">
+        <div class="faq-item fade-in delay-1">
+          <h4>Do you do marketing or SEO?</h4>
+          <p>No, we strictly specialize in web development. By focusing 100% of our energy exclusively on building incredible, high-converting websites, we deliver unmatched technical quality without distractions.</p>
+        </div>
+        <div class="faq-item fade-in delay-2">
+          <h4>What is the process?</h4>
+          <p>We capture your brand identity, plan the technical execution, and build a totally custom, blazing-fast website deployed directly onto live servers.</p>
+        </div>
+        <div class="faq-item fade-in delay-3">
+          <h4>Why choose Two19 Labs?</h4>
+          <p>Because web development is absolutely all we do. We don't inflate invoices with broad marketing packages or consulting fees. We just code fast, beautiful websites.</p>
+        </div>
+        <div class="faq-item fade-in delay-4">
+          <h4>How do we start?</h4>
+          <p>Reach out to us directly by phone, and our lead developer will coordinate an immediate discovery chat with you to map out your new website.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="contact">
+    <div class="footer-container">
+      <div class="footer-left">
+        <h2>Don't miss, do it right.</h2>
+        <address>
+          Two19 Labs<br>
+          Serving Small Businesses Worldwide
+        </address>
+        <div class="footer-contact-info">
+          <p>Contact Us</p>
+          <a href="mailto:two19labs@gmail.com">two19labs@gmail.com</a>
+          <a href="tel:+919834722416">+91 9834722416</a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <div class="footer-col">
+          <h4>Links</h4>
+          <ul>
+            <li><a href="/">Overview</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/services">Services</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+             <li><a href="terms.html">Terms &amp; Conditions</a></li>
+             <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Socials</h4>
+          <ul>
+             <li><a href="#">Instagram</a></li>
+             <li><a href="#">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

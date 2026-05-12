@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Conditions | Two19 Labs</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Standard internal page styling */
+    .legal-header {
+      padding: 180px 5% 80px 5%;
+      background: var(--bg-color);
+      text-align: center;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .legal-header h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 20px;
+    }
+    .legal-header p {
+      color: var(--text-gray);
+      font-size: 1.1rem;
+    }
+    .legal-content {
+      padding: 80px 5% 120px 5%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .legal-content h2 {
+      font-size: 2rem;
+      margin-top: 60px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 10px;
+    }
+    .legal-content h3 {
+      font-size: 1.3rem;
+      margin-top: 30px;
+      margin-bottom: 16px;
+    }
+    .legal-content p {
+      margin-bottom: 20px;
+      color: var(--text-gray);
+      line-height: 1.8;
+    }
+    .legal-content ul {
+      margin-bottom: 30px;
+      padding-left: 20px;
+      color: var(--text-gray);
+      line-height: 1.8;
+    }
+    .legal-content li {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <svg display="none">
+    <filter id="liquid-distortion">
+      <feTurbulence type="fractalNoise" baseFrequency="0.001 0.005" numOctaves="1" seed="17" result="turbulence"/>
+      <feComponentTransfer in="turbulence" result="mapped">
+        <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5"/>
+        <feFuncG type="gamma" amplitude="0" exponent="1" offset="0"/>
+        <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5"/>
+      </feComponentTransfer>
+      <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap"/>
+      <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100" lightingColor="white" result="specLight">
+        <fePointLight x="-200" y="-200" z="300"/>
+      </feSpecularLighting>
+      <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage"/>
+      <feDisplacementMap in="SourceGraphic" in2="softMap" scale="200" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+
+  <nav class="navbar">
+    <div class="glass-blur-layer"></div>
+    <div class="glass-tint-layer"></div>
+    <div class="glass-highlight-layer"></div>
+    <div class="nav-container">
+      <a href="index.html#home" class="logo-img-wrap" aria-label="Two19 Labs">
+        <img src="logo.png" alt="Two19 Labs" class="logo-img" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#home">HOME</a></li>
+        <li><a href="index.html#about">ABOUT</a></li>
+        <li><a href="index.html#services">SERVICES</a></li>
+      </ul>
+      <div class="desktop-cta">
+        <a href="tel:9834722416" class="btn btn-outline nav-btn">Let's talk</a>
+      </div>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" aria-label="Close menu">&times;</button>
+    <ul>
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="tel:9834722416">Let's talk</a></li>
+    </ul>
+  </div>
+  <div class="mobile-menu-backdrop" id="mobileMenuBackdrop"></div>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <section class="legal-header">
+      <div class="container">
+        <h1>Terms &amp; Conditions</h1>
+        <p>Last Updated: March 2026</p>
+      </div>
+    </section>
+
+    <section class="legal-content">
+      <p>Welcome to Two19 Labs. These Terms and Conditions govern your use of our website development services and your relationship with Two19 Labs ("we", "us", or "our"). By engaging with us, accepting a proposal, or utilizing our services, you ("the Client") agree to be bound by these final terms.</p>
+      
+      <h2>1. Scope of Work &amp; Project Execution</h2>
+      <p>Two19 Labs specializes exclusively in custom web development, design, and deployment. We do not offer generalized marketing, social media management, or unrelated consulting services.</p>
+      <ul>
+        <li><strong>Project Scope:</strong> The exact scope of work (SOW) will be defined in a mutually agreed-upon proposal or service agreement prior to the commencement of any development. Focus extends only to structural design, architecture, and coding deliverables.</li>
+        <li><strong>Out of Scope:</strong> Any features, pages, or integrations requested outside the original SOW will be subject to additional billing and require a formal Change Order.</li>
+        <li><strong>Client Obligations:</strong> The Client is responsible for delivering necessary assets (copywriting, brand guidelines, logos, images) in a timely manner. Delays in asset delivery will inherently delay project milestones.</li>
+      </ul>
+
+      <h2>2. Pricing, Invoicing &amp; Payments</h2>
+      <p>Given the highly custom nature of technical development, payment structures are strictly enforced.</p>
+      <ul>
+        <li><strong>Deposits:</strong> A non-refundable upfront deposit (typically 50% of the total project cost) is required before any development, wireframing, or technical setup begins.</li>
+        <li><strong>Milestone Payments:</strong> Remaining balances are typically due upon completion of specific project milestones or prior to final launch and migration to the live server.</li>
+        <li><strong>Late Fees:</strong> Invoices not paid within 14 days of receipt may be subject to a late fee of 5% per month, and active development or hosting services may be suspended until accounts are cleared.</li>
+      </ul>
+
+      <h2>3. Revisions &amp; Approvals</h2>
+      <p>We work collaboratively with our clients to ensure the final product matches its intent, but revisions are structurally capped to prevent endless development cycles.</p>
+      <ul>
+        <li><strong>Revision Rounds:</strong> The standard project proposal includes two (2) rounds of revisions during the design and development phases. A "round" is defined as a consolidated list of requested edits.</li>
+        <li><strong>Approval:</strong> Upon final review, the Client will formally approve the website for launch. Any structural layout, design, or architectural changes requested after final approval and launch will be billed at an hourly developer rate.</li>
+      </ul>
+
+      <h2>4. Intellectual Property &amp; Ownership</h2>
+      <p>We believe our clients should own their digital assets once fully compensated.</p>
+      <ul>
+        <li><strong>Transfer of Ownership:</strong> Upon receipt of full and final payment, copyright and ownership of the final deployed website (HTML, CSS, JS, and visual layout) will be fully transferred to the Client.</li>
+        <li><strong>Our Rights:</strong> Two19 Labs retains the right to display the completed website, design materials, and case studies in our portfolio and marketing materials unless a strict Non-Disclosure Agreement (NDA) is executed prior to the project.</li>
+        <li><strong>Third-Party Assets:</strong> Any third-party software, fonts, or stock imagery used in the project remain the property of their respective owners and are subject to their specific licensing terms.</li>
+      </ul>
+
+      <h2>5. Warranties &amp; Liability</h2>
+      <p>While we build extremely robust, modern websites, absolute perfection in computing environments is impossible to guarantee.</p>
+      <ul>
+        <li><strong>Bug Support:</strong> Two19 Labs provides a 30-day post-launch warranty period to resolve any critical bugs or technical failures that stem strictly from our initial code structure.</li>
+        <li><strong>Limitation of Liability:</strong> We are not liable for any losses, damages, or loss of revenue arising from downtime, third-party server failures, domain registry errors, malicious hacking, or unauthorized modifications made by the Client scaling post-launch.</li>
+      </ul>
+
+      <h2>6. Termination</h2>
+      <p>Either party may terminate the project agreement with 14 days written notice if the other party breaches material terms. In the event of early termination by the Client, Two19 Labs will retain the initial deposit and bill for any billable hours exceeding the deposit amount up to the point of cancellation.</p>
+
+      <h2>7. Contact Us</h2>
+      <p>If you have any questions or concerns regarding these terms, please contact us directly.</p>
+      <p>Email: <a href="mailto:two19labs@gmail.com">two19labs@gmail.com</a><br>Phone: <a href="tel:9834722416">+91 9834722416</a></p>
+    </section>
+
+  </main>
+
+  <footer id="contact">
+    <div class="footer-container">
+      <div class="footer-left">
+        <h2>Don't miss, do it right.</h2>
+        <address>
+          Two19 Labs<br>
+          Serving Small Businesses Worldwide
+        </address>
+        <div class="footer-contact-info">
+          <p>Contact Us</p>
+          <a href="mailto:two19labs@gmail.com">two19labs@gmail.com</a>
+          <a href="tel:+919834722416">+91 9834722416</a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <div class="footer-col">
+          <h4>Links</h4>
+          <ul>
+            <li><a href="index.html#home">Overview</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#services">Services</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+             <li><a href="terms.html">Terms &amp; Conditions</a></li>
+             <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Socials</h4>
+          <ul>
+             <li><a href="#">Instagram</a></li>
+             <li><a href="#">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

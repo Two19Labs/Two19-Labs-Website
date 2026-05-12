@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell -Command \"Get-Command node -ErrorAction SilentlyContinue; ls ''C:\\\\Program Files\\\\nodejs\\\\'' 2>$null; ls ''C:\\\\Users\\\\PC\\\\AppData\\\\Roaming\\\\npm\\\\'' 2>$null\")"
+    ]
+  }
+}
