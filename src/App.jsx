@@ -1,28 +1,28 @@
+import Cursor from './components/Cursor'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Marquee from './components/Marquee'
-import Pillars from './components/Pillars'
-import Process from './components/Process'
+import WhatWeDo from './components/WhatWeDo'
 import Services from './components/Services'
-import Why from './components/Why'
-import Testimonials from './components/Testimonials'
+import Industries from './components/Industries'
+import Process from './components/Process'
 import FAQ from './components/FAQ'
+import CTA from './components/CTA'
 import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <div className="relative grain-overlay min-h-screen overflow-x-hidden">
+    <div className="relative min-h-screen overflow-x-hidden">
+      <Cursor />
       <Nav />
-      <main>
-        <Hero />
-        <Marquee />
-        <Pillars />
-        <Process />
-        <Services />
-        <Why />
-        <Testimonials />
-        <FAQ />
-      </main>
+      <Hero />
+      <Marquee />
+      <WhatWeDo />
+      <Services />
+      <Industries />
+      <Process />
+      <FAQ />
+      <CTA />
       <Footer />
     </div>
   )

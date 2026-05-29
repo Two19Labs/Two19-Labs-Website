@@ -1,18 +1,21 @@
+// Two19 Labs "T19" mark. Uses currentColor so it inherits nav/footer text color;
+// the small square accent stays brand blue.
 export default function Logo({ className = '' }) {
   return (
-    <span
-      className={`select-none font-display font-semibold tracking-tight text-white ${className}`}
+    <svg
+      className={className}
+      viewBox="0 0 950 385"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
       aria-label="Two19 Labs"
     >
-      <span className="text-brand-500">[</span>
-      <span className="px-1">
-        Two
-        <span className="bg-gradient-to-br from-brand-300 to-brand-600 bg-clip-text text-transparent">
-          19
-        </span>{' '}
-        Labs
-      </span>
-      <span className="text-brand-500">]</span>
-    </span>
+      <g transform="translate(0,680) scale(0.1,-0.1)" fill="currentColor">
+        <path d="M0 6530 l0 -180 1616 0 1616 0 87 82 c175 168 271 263 271 270 0 5 -808 8 -1795 8 l-1795 0 0 -180z" />
+        <path d="M4554 6691 l-120 -6 -76 -60 c-41 -33 -109 -86 -149 -117 -41 -31 -145 -111 -231 -178 l-158 -121 0 -220 c0 -174 3 -219 13 -212 12 7 190 145 434 337 67 53 127 96 133 96 7 0 10 -496 10 -1585 l0 -1585 183 2 182 3 0 1825 0 1825 -50 1 c-27 0 -104 -2 -171 -5z" />
+        <path d="M6795 6664 c-111 -17 -317 -82 -417 -133 -266 -133 -505 -373 -630 -631 -82 -170 -119 -318 -125 -507 -8 -220 25 -386 117 -577 40 -86 152 -247 223 -323 43 -47 170 -148 243 -195 153 -98 364 -171 569 -198 155 -20 142 -28 277 150 65 85 118 157 118 160 0 3 -57 3 -127 1 -253 -7 -492 59 -679 187 -67 45 -185 164 -231 233 -176 257 -205 571 -83 887 67 175 230 365 403 472 285 175 655 209 957 87 168 -68 350 -214 445 -358 125 -188 190 -439 166 -641 -32 -263 -113 -446 -313 -709 -34 -46 -103 -140 -153 -208 -102 -140 -614 -829 -830 -1116 -79 -104 -141 -193 -138 -197 2 -5 105 -8 228 -8 l223 0 78 108 c43 59 125 172 182 252 58 80 169 231 247 335 78 105 213 289 300 410 87 121 187 258 221 305 215 292 314 570 314 888 0 116 -18 270 -42 357 -17 60 -87 232 -121 295 -187 351 -548 602 -966 674 -114 19 -328 19 -456 0z" />
+        <path d="M1445 5948 c-3 -7 -4 -663 -3 -1458 l3 -1445 185 0 185 0 0 1455 0 1455 -183 3 c-140 2 -184 0 -187 -10z" />
+      </g>
+      <rect x="878" y="314" width="61" height="62" fill="#2540ff" />
+    </svg>
   )
 }

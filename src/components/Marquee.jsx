@@ -1,21 +1,25 @@
-import { marqueeTop } from '../data/content'
+import { deliver } from '../data/content'
 
 export default function Marquee() {
-  const items = [...marqueeTop, ...marqueeTop]
+  // duplicate the list so the -50% scroll loops seamlessly
+  const items = [...deliver, ...deliver]
   return (
-    <section aria-label="What we do" className="relative border-y border-line bg-ink-100 py-6">
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-ink-100 to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-ink-100 to-transparent" />
-      <div className="flex w-max animate-marquee items-center gap-10 whitespace-nowrap">
-        {items.map((item, i) => (
-          <span key={i} className="flex items-center gap-10 text-lg font-medium text-mute">
-            {item}
-            <span className="text-brand-500" aria-hidden>
-              ✦
+    <>
+      <p className="mb-6 px-6 font-mono text-xs text-ink-soft md:px-12">// what we deliver</p>
+      <div className="group relative overflow-hidden border-y border-line bg-paper py-[30px]">
+        <div className="flex w-max gap-20 animate-scroll group-hover:[animation-play-state:paused]">
+          {items.map((item, i) => (
+            <span key={i} className="flex items-center gap-20 whitespace-nowrap">
+              <span className="text-[26px] font-semibold text-ink opacity-55 transition-[opacity,color] duration-300 hover:text-blue hover:opacity-100">
+                {item}
+              </span>
+              <span aria-hidden className="text-[26px] font-semibold text-ink opacity-30">
+                ·
+              </span>
             </span>
-          </span>
-        ))}
+          ))}
+        </div>
       </div>
-    </section>
+    </>
   )
 }
