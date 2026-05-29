@@ -1,6 +1,0 @@
-{
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/(home|about|services|process|why|testimonials|pages|contact)", "destination": "/index.html" }
-  ]
-}

@@ -1,7 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "Bash(powershell -Command \"Get-Command node -ErrorAction SilentlyContinue; ls ''C:\\\\Program Files\\\\nodejs\\\\'' 2>$null; ls ''C:\\\\Users\\\\PC\\\\AppData\\\\Roaming\\\\npm\\\\'' 2>$null\")"
+      "Bash(powershell -Command \"Get-Command node -ErrorAction SilentlyContinue; ls ''C:\\\\Program Files\\\\nodejs\\\\'' 2>$null; ls ''C:\\\\Users\\\\PC\\\\AppData\\\\Roaming\\\\npm\\\\'' 2>$null\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(python -c \"import rembg; print\\('rembg ok'\\)\")",
+      "Bash(python -c \"from PIL import Image; print\\('PIL ok'\\)\")",
+      "PowerShell(python -c \"import rembg; print\\('rembg ok'\\)\" 2>&1; python -c \"from PIL import Image; print\\('PIL ok'\\)\" 2>&1)",
+      "PowerShell(py *)"
     ]
   }
 }
