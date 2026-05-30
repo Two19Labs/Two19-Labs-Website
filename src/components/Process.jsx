@@ -14,12 +14,12 @@ export default function Process() {
           long-term partnership.
         </Reveal>
 
-        <div className="mt-[72px] grid grid-cols-1 gap-px border border-line bg-line md:grid-cols-2">
+        <div className="mt-10 grid grid-cols-1 gap-px border border-line bg-line md:mt-[72px] md:grid-cols-2">
           {process.map((step, i) => (
             <Reveal
               key={step.n}
               delay={(i % 2) * 70}
-              className="flex gap-6 bg-paper p-9 transition-colors duration-[400ms] hover:bg-card md:p-10"
+              className="flex gap-5 bg-paper p-7 transition-colors duration-[400ms] hover:bg-card md:gap-6 md:p-10"
             >
               <div className="min-w-9 font-mono text-[15px] font-medium text-blue">{step.n}</div>
               <div>

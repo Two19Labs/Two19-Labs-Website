@@ -10,18 +10,18 @@ export default function Services() {
           Everything you need to build &amp; scale.
         </Reveal>
 
-        <div className="mt-[72px] grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 md:mt-[72px] lg:grid-cols-3">
           {services.map((s, i) => (
             <Reveal
               key={s.n}
               delay={(i % 3) * 70}
-              className="group relative flex min-h-[280px] cursor-pointer flex-col overflow-hidden bg-paper p-9 transition-colors duration-500 hover:bg-card md:p-10"
+              className="group relative flex min-h-[200px] cursor-pointer flex-col overflow-hidden bg-paper p-7 transition-colors duration-500 hover:bg-card md:min-h-[280px] md:p-10"
             >
               <div className="font-mono text-[13px] text-blue">{s.n}</div>
-              <span className="pointer-events-none absolute right-9 top-10 text-xl text-blue opacity-0 transition-[opacity,transform] duration-300 [transform:translate(-8px,8px)] group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100">
+              <span className="pointer-events-none absolute right-7 top-8 text-xl text-blue opacity-0 transition-[opacity,transform] duration-300 [transform:translate(-8px,8px)] group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100 md:right-9 md:top-10">
                 ↗
               </span>
-              <h3 className="mb-3.5 mt-[60px] text-[25px] font-semibold leading-[1.1] tracking-tight2">
+              <h3 className="mb-3.5 mt-9 text-[22px] font-semibold leading-[1.1] tracking-tight2 md:mt-[60px] md:text-[25px]">
                 {s.title}
               </h3>
               <p className="text-sm leading-[1.6] text-ink-soft">{s.body}</p>

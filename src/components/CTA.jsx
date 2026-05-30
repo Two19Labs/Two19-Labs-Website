@@ -2,7 +2,7 @@ import Reveal from './Reveal'
 
 export default function CTA() {
   return (
-    <Reveal className="mx-4 rounded-band bg-ink px-6 py-[90px] text-center text-white md:mx-12 md:px-12">
+    <Reveal className="mx-4 rounded-band bg-ink px-6 py-16 text-center text-white sm:mx-6 md:mx-12 md:px-12 md:py-[90px]">
       <h2
         className="mb-6 font-bold tracking-tight2"
         style={{ fontSize: 'clamp(34px,6vw,86px)', lineHeight: 1 }}

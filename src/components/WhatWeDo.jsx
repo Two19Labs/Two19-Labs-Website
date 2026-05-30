@@ -31,7 +31,7 @@ export default function WhatWeDo() {
           your operations and strategic objectives — no off-the-shelf compromises.
         </Reveal>
 
-        <div className="mt-20 grid grid-cols-1 gap-12 md:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-10 md:mt-20 md:grid-cols-3 md:gap-12">
           {stats.map((s, i) => (
             <Stat key={s.label} {...s} delay={i * 90} />
           ))}
