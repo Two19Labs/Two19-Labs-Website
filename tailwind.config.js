@@ -25,6 +25,10 @@ export default {
         pill: '100px',
         band: '28px',
       },
+      backgroundImage: {
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
       keyframes: {
         scroll: {
           to: { transform: 'translateX(-50%)' },

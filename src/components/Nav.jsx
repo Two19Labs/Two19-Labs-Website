@@ -14,10 +14,10 @@ export default function Nav() {
 
   return (
     <nav
-      className={`fixed inset-x-0 top-0 z-[1000] flex items-center justify-between text-ink transition-[padding,background-color,box-shadow,backdrop-filter] duration-[400ms] md:px-12 ${
+      className={`fixed inset-x-0 top-0 z-[1000] flex items-center justify-between transition-[padding,background-color,box-shadow,backdrop-filter,color] duration-[400ms] md:px-12 ${
         scrolled
-          ? 'bg-paper/80 px-6 py-3 shadow-[0_1px_0_#dcdcd6] backdrop-blur-[14px]'
-          : 'px-6 py-[22px]'
+          ? 'bg-paper/80 px-6 py-3 text-ink shadow-[0_1px_0_#dcdcd6] backdrop-blur-[14px]'
+          : 'px-6 py-[22px] text-white'
       }`}
     >
       <a href="#home" aria-label="Two19 Labs home" className="inline-flex items-center text-current">
@@ -34,7 +34,11 @@ export default function Nav() {
             {item.label}
           </a>
         ))}
-        <button className="rounded-pill border border-current px-5 py-2.5 text-[13px] font-semibold transition-colors duration-300 hover:bg-ink hover:text-white">
+        <button
+          className={`rounded-pill border border-current px-5 py-2.5 text-[13px] font-semibold transition-colors duration-300 ${
+            scrolled ? 'hover:bg-ink hover:text-white' : 'hover:bg-white hover:text-ink'
+          }`}
+        >
           Book a call
         </button>
       </div>

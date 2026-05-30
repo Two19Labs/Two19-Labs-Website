@@ -4,7 +4,7 @@ export default function Marquee() {
   // duplicate the list so the -50% scroll loops seamlessly
   const items = [...deliver, ...deliver]
   return (
-    <>
+    <section className="pt-24 md:pt-28">
       <p className="mb-6 px-6 font-mono text-xs text-ink-soft md:px-12">// what we deliver</p>
       <div className="group relative overflow-hidden border-y border-line bg-paper py-[30px]">
         <div className="flex w-max gap-20 animate-scroll group-hover:[animation-play-state:paused]">
@@ -20,6 +20,6 @@ export default function Marquee() {
           ))}
         </div>
       </div>
-    </>
+    </section>
   )
 }

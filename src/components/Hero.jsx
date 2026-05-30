@@ -1,71 +1,49 @@
-import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import { LampContainer } from '@/components/ui/lamp'
 
 export default function Hero() {
-  const [show, setShow] = useState(false)
-
-  useEffect(() => {
-    const t = setTimeout(() => setShow(true), 150)
-    return () => clearTimeout(t)
-  }, [])
-
-  const fade = (delay) => ({
-    opacity: show ? 1 : 0,
-    transform: show ? 'none' : 'translateY(20px)',
-    transition: 'opacity 1s ease, transform 1s cubic-bezier(0.16,1,0.3,1)',
-    transitionDelay: `${delay}ms`,
-  })
-
-  const Line = ({ children, accent }) => (
-    <span className="block overflow-hidden">
-      <span
-        className={`block ${accent ? 'text-blue' : ''}`}
-        style={{
-          transform: show ? 'translateY(0)' : 'translateY(110%)',
-          transition: 'transform 1s cubic-bezier(0.16,1,0.3,1)',
-        }}
-      >
-        {children}
-      </span>
-    </span>
-  )
-
   return (
-    <header
-      id="home"
-      className="relative flex min-h-screen flex-col justify-center px-6 pb-[60px] pt-[120px] md:px-12"
-    >
-      <p
-        className="mb-10 max-w-[560px] font-mono text-[13px] leading-[1.7] text-ink-soft"
-        style={fade(100)}
-      >
-        "The businesses that <span className="text-blue">automate today</span> are the ones that{' '}
-        <span className="text-blue">dominate tomorrow</span>."
-      </p>
+    <header id="home">
+      <LampContainer>
+        <motion.h1
+          initial={{ opacity: 0.5, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8, ease: 'easeInOut' }}
+          className="bg-gradient-to-br from-slate-200 to-slate-500 bg-clip-text py-4 text-center text-4xl font-bold tracking-tightest text-transparent md:text-7xl"
+        >
+          Build smarter. <br /> Scale faster.
+        </motion.h1>
 
-      <h1
-        className="mb-[38px] font-bold tracking-tightest"
-        style={{ fontSize: 'clamp(42px,9vw,140px)', lineHeight: 0.92 }}
-      >
-        <Line>Build smarter.</Line>
-        <Line accent>Scale faster.</Line>
-        <Line>Transform fully.</Line>
-      </h1>
+        <motion.p
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8, ease: 'easeInOut' }}
+          className="mx-auto mt-4 max-w-xl text-center text-[15px] leading-[1.6] text-slate-400 md:text-lg"
+        >
+          Two19 Labs builds custom software, AI automations, and internal tools from scratch —
+          systems that eliminate the manual work killing your team's time. No templates. Ever.
+        </motion.p>
 
-      <p
-        className="mb-11 max-w-[600px] font-normal leading-[1.6] text-ink-soft"
-        style={{ ...fade(650), fontSize: 'clamp(15px,2vw,19px)' }}
-      >
-        Two19 Labs is a technology &amp; digital transformation agency. We build custom software, AI
-        automations, and internal tools from scratch — systems that eliminate the manual work killing
-        your team's time. No templates. Ever.
-      </p>
-
-      <div className="flex flex-wrap gap-4" style={fade(800)}>
-        <button className="btn-primary">
-          <span>Start a project</span> <span className="arrow">↗</span>
-        </button>
-        <button className="btn-ghost">Explore services</button>
-      </div>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.75, duration: 0.8, ease: 'easeInOut' }}
+          className="mt-9 flex flex-wrap items-center justify-center gap-4"
+        >
+          <a
+            href="#services"
+            className="inline-flex items-center gap-2.5 rounded-pill bg-blue px-8 py-4 text-[15px] font-semibold text-white transition-[transform,background-color] duration-300 hover:bg-[#1b33e6] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+          >
+            Start a project <span aria-hidden>↗</span>
+          </a>
+          <a
+            href="#process"
+            className="inline-flex items-center rounded-pill border border-white/25 bg-white/[0.04] px-8 py-4 text-[15px] font-semibold text-white transition-[transform,background-color,border-color] duration-300 hover:border-white/50 hover:bg-white/10 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+          >
+            How we work
+          </a>
+        </motion.div>
+      </LampContainer>
     </header>
   )
 }
