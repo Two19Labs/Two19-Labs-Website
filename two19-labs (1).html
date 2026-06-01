@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Two19 Labs — Custom Software & AI Automation Agency</title>
+<meta name="description" content="Two19 Labs builds custom software, AI-powered workflows, and automation systems from scratch. A technology and digital transformation agency. No templates. No off-the-shelf solutions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f4f1;
+  --ink:#0a0a0c;
+  --ink-soft:#5a5a64;
+  --line:#dcdcd6;
+  --blue:#2540ff;
+  --card:#ffffff;
+  --mono:'JetBrains Mono',monospace;
+  --sans:'Space Grotesk',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--blue);color:#fff}
+
+/* ─── CURSOR DOT ─── */
+.cursor{
+  position:fixed;width:8px;height:8px;border-radius:50%;background:var(--blue);
+  pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
+  transition:width .25s,height .25s,background .25s;mix-blend-mode:difference;
+}
+.cursor.grow{width:46px;height:46px;background:#fff}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px 48px;transition:padding .4s ease,background .4s ease,box-shadow .4s ease,backdrop-filter .4s ease;
+  color:#fff;
+}
+nav.scrolled{
+  padding:12px 48px;background:rgba(244,244,241,.82);backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 var(--line);color:var(--ink);
+}
+.logo{text-decoration:none;display:inline-flex;align-items:center;color:inherit}
+.logo-mark{height:26px;width:auto;display:block;color:inherit}
+.logo-foot{height:30px}
+.nav-links{display:flex;gap:34px;align-items:center}
+.nav-links a{color:inherit;text-decoration:none;font-size:14px;font-weight:500;opacity:.85;transition:opacity .3s}
+.nav-links a:hover{opacity:1}
+.nav-cta{
+  border:1px solid currentColor;color:inherit;padding:9px 20px;border-radius:100px;
+  font-size:13px;font-weight:600;cursor:pointer;background:transparent;
+  transition:all .35s cubic-bezier(.4,0,.2,1);
+}
+nav.scrolled .nav-cta:hover{background:var(--ink);color:#fff}
+nav:not(.scrolled) .nav-cta:hover{background:#fff;color:var(--ink)}
+@media(max-width:760px){.nav-links a:not(.nav-cta){display:none}nav{padding:18px 24px}}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  padding:120px 48px 60px;position:relative;
+}
+.hero-quote{
+  font-family:var(--mono);font-size:13px;color:var(--ink-soft);
+  margin-bottom:40px;max-width:560px;line-height:1.7;
+  opacity:0;transform:translateY(20px);
+}
+.hero-quote .b{color:var(--blue)}
+.hero h1{
+  font-size:clamp(42px,9vw,140px);font-weight:700;line-height:.92;
+  letter-spacing:-.04em;margin-bottom:38px;
+}
+.hero h1 .reveal-line{display:block;overflow:hidden}
+.hero h1 .reveal-line span{display:block;transform:translateY(110%);transition:transform 1s cubic-bezier(.16,1,.3,1)}
+.hero h1.in .reveal-line span{transform:translateY(0)}
+.hero h1 .accent{color:var(--blue)}
+.hero-sub{
+  font-size:clamp(15px,2vw,19px);color:var(--ink-soft);max-width:600px;
+  line-height:1.6;margin-bottom:44px;font-weight:400;
+  opacity:0;transform:translateY(20px);
+}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;opacity:0;transform:translateY(20px)}
+.btn-primary{
+  background:var(--ink);color:#fff;border:none;padding:17px 34px;border-radius:100px;
+  font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;
+  display:inline-flex;align-items:center;gap:10px;
+  transition:all .4s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden;
+}
+.btn-primary span{position:relative;z-index:2;transition:color .4s}
+.btn-primary::before{
+  content:'';position:absolute;inset:0;background:var(--blue);
+  transform:translateY(101%);transition:transform .45s cubic-bezier(.16,1,.3,1);z-index:1;
+}
+.btn-primary:hover::before{transform:translateY(0)}
+.btn-primary .arrow{position:relative;z-index:2;transition:transform .4s}
+.btn-primary:hover .arrow{transform:translate(4px,-4px)}
+.btn-ghost{
+  background:transparent;color:var(--ink);border:1px solid var(--line);
+  padding:17px 34px;border-radius:100px;font-family:var(--sans);font-size:15px;
+  font-weight:600;cursor:pointer;transition:all .4s;
+}
+.btn-ghost:hover{border-color:var(--ink);background:var(--ink);color:#fff}
+
+/* ─── MARQUEE ─── */
+.marquee-label{font-family:var(--mono);font-size:12px;color:var(--ink-soft);padding:0 48px;margin-bottom:24px}
+.marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:30px 0;position:relative;background:var(--bg)}
+.marquee-track{display:flex;gap:80px;width:max-content;animation:scroll 28s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track .item{font-size:26px;font-weight:600;color:var(--ink);white-space:nowrap;opacity:.55;transition:opacity .3s;font-family:var(--sans)}
+.marquee-track .item:hover{opacity:1;color:var(--blue)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ─── SECTION SHELL ─── */
+section{padding:120px 48px;position:relative}
+.tag{font-family:var(--mono);font-size:12px;color:var(--blue);margin-bottom:28px;display:flex;align-items:center;gap:10px}
+.tag::before{content:'//';opacity:.6}
+.sec-h{font-size:clamp(32px,5.5vw,72px);font-weight:700;letter-spacing:-.03em;line-height:1.02;max-width:880px;margin-bottom:32px}
+.sec-p{font-size:18px;color:var(--ink-soft);max-width:620px;line-height:1.6}
+
+/* reveal */
+.r{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.r.in{opacity:1;transform:none}
+
+/* ─── STATS ─── */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:80px}
+.stat .num{font-size:clamp(56px,9vw,120px);font-weight:700;letter-spacing:-.04em;line-height:1;color:var(--blue)}
+.stat .lbl{font-size:16px;color:var(--ink-soft);margin-top:14px;max-width:240px}
+@media(max-width:760px){.stats{grid-template-columns:1fr;gap:48px}}
+
+/* ─── SERVICES ─── */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:72px;border:1px solid var(--line)}
+.svc{background:var(--bg);padding:44px 36px;min-height:280px;display:flex;flex-direction:column;cursor:pointer;transition:background .5s;position:relative;overflow:hidden}
+.svc::after{content:'';position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--blue);transition:width .5s cubic-bezier(.16,1,.3,1)}
+.svc:hover{background:var(--card)}
+.svc:hover::after{width:100%}
+.svc .n{font-family:var(--mono);font-size:13px;color:var(--blue);margin-bottom:auto}
+.svc h3{font-size:25px;font-weight:600;letter-spacing:-.02em;margin:60px 0 14px;line-height:1.1}
+.svc p{font-size:14px;color:var(--ink-soft);line-height:1.6}
+.svc .go{position:absolute;top:40px;right:36px;font-size:20px;color:var(--blue);opacity:0;transform:translate(-8px,8px);transition:all .4s}
+.svc:hover .go{opacity:1;transform:none}
+@media(max-width:980px){.svc-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.svc-grid{grid-template-columns:1fr}}
+
+/* ─── INDUSTRIES MARQUEE ─── */
+.ind-marquee{overflow:hidden;padding:40px 0;margin-top:40px}
+.ind-track{display:flex;gap:24px;width:max-content;animation:scroll 32s linear infinite}
+.ind-track.rev{animation-direction:reverse}
+.ind-pill{border:1px solid var(--line);border-radius:100px;padding:14px 28px;font-size:17px;font-weight:500;white-space:nowrap;color:var(--ink);transition:all .3s}
+.ind-pill:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+/* ─── PROCESS ─── */
+.proc{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin-top:72px;border:1px solid var(--line)}
+.step{background:var(--bg);padding:40px 36px;display:flex;gap:24px;transition:background .4s}
+.step:hover{background:var(--card)}
+.step .sn{font-family:var(--mono);font-size:15px;color:var(--blue);font-weight:500;min-width:36px}
+.step h4{font-size:20px;font-weight:600;margin-bottom:10px;letter-spacing:-.01em}
+.step p{font-size:14px;color:var(--ink-soft);line-height:1.6}
+@media(max-width:760px){.proc{grid-template-columns:1fr}}
+
+/* ─── FAQ ─── */
+.faq{margin-top:60px;max-width:900px}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;background:none;border:none;text-align:left;cursor:pointer;
+  padding:30px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;
+  font-family:var(--sans);font-size:clamp(18px,2.4vw,24px);font-weight:500;color:var(--ink);letter-spacing:-.01em}
+.faq-q .pm{font-size:26px;color:var(--blue);transition:transform .4s;flex-shrink:0}
+.faq-item.open .pm{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1)}
+.faq-a p{padding:0 0 30px;font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:760px}
+
+/* ─── CTA ─── */
+.cta-band{background:var(--ink);color:#fff;border-radius:28px;margin:0 48px;padding:90px 48px;text-align:center}
+.cta-band h2{font-size:clamp(34px,6vw,86px);font-weight:700;letter-spacing:-.03em;line-height:1;margin-bottom:24px}
+.cta-band p{color:#9a9aa6;font-size:18px;margin-bottom:40px}
+.cta-band .btn-primary{background:var(--blue)}
+.cta-band .btn-primary::before{background:#fff}
+.cta-band .btn-primary:hover span,.cta-band .btn-primary:hover .arrow{color:var(--ink)}
+
+/* ─── FOOTER ─── */
+footer{padding:80px 48px 48px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:40px;border-top:1px solid var(--line);margin-top:120px}
+footer .logo{color:var(--ink)}
+.logo-foot{color:var(--ink)}
+.foot-col h5{font-family:var(--mono);font-size:12px;color:var(--ink-soft);margin-bottom:16px;text-transform:uppercase;letter-spacing:.05em}
+.foot-col a{display:block;color:var(--ink);text-decoration:none;font-size:15px;margin-bottom:10px;opacity:.75;transition:opacity .3s}
+.foot-col a:hover{opacity:1;color:var(--blue)}
+.copy{width:100%;font-family:var(--mono);font-size:12px;color:var(--ink-soft);padding-top:40px;border-top:1px solid var(--line);margin-top:20px}
+@media(max-width:760px){section,.hero{padding-left:24px;padding-right:24px}.cta-band{margin:0 16px;padding:60px 24px}footer{padding:60px 24px}}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+
+<nav id="nav">
+  <a href="#" class="logo" aria-label="Two19 Labs home"><svg class="logo-mark" viewBox="0 0 950 385" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="T19"><g transform="translate(0,680) scale(0.1,-0.1)" fill="currentColor"><path d="M0 6530 l0 -180 1616 0 1616 0 87 82 c175 168 271 263 271 270 0 5 -808 8 -1795 8 l-1795 0 0 -180z"/><path d="M4554 6691 l-120 -6 -76 -60 c-41 -33 -109 -86 -149 -117 -41 -31 -145 -111 -231 -178 l-158 -121 0 -220 c0 -174 3 -219 13 -212 12 7 190 145 434 337 67 53 127 96 133 96 7 0 10 -496 10 -1585 l0 -1585 183 2 182 3 0 1825 0 1825 -50 1 c-27 0 -104 -2 -171 -5z"/><path d="M6795 6664 c-111 -17 -317 -82 -417 -133 -266 -133 -505 -373 -630 -631 -82 -170 -119 -318 -125 -507 -8 -220 25 -386 117 -577 40 -86 152 -247 223 -323 43 -47 170 -148 243 -195 153 -98 364 -171 569 -198 155 -20 142 -28 277 150 65 85 118 157 118 160 0 3 -57 3 -127 1 -253 -7 -492 59 -679 187 -67 45 -185 164 -231 233 -176 257 -205 571 -83 887 67 175 230 365 403 472 285 175 655 209 957 87 168 -68 350 -214 445 -358 125 -188 190 -439 166 -641 -32 -263 -113 -446 -313 -709 -34 -46 -103 -140 -153 -208 -102 -140 -614 -829 -830 -1116 -79 -104 -141 -193 -138 -197 2 -5 105 -8 228 -8 l223 0 78 108 c43 59 125 172 182 252 58 80 169 231 247 335 78 105 213 289 300 410 87 121 187 258 221 305 215 292 314 570 314 888 0 116 -18 270 -42 357 -17 60 -87 232 -121 295 -187 351 -548 602 -966 674 -114 19 -328 19 -456 0z"/><path d="M1445 5948 c-3 -7 -4 -663 -3 -1458 l3 -1445 185 0 185 0 0 1455 0 1455 -183 3 c-140 2 -184 0 -187 -10z"/></g><rect x="878" y="314" width="61" height="62" fill="#2540ff"/></svg></a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#process">How We Work</a>
+    <a href="#industries">Industries</a>
+    <a href="#faq">FAQ</a>
+    <button class="nav-cta">Book a call</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <p class="hero-quote" id="hq">"The businesses that <span class="b">automate today</span> are the ones that <span class="b">dominate tomorrow</span>."</p>
+  <h1 id="heroH">
+    <span class="reveal-line"><span>Build smarter.</span></span>
+    <span class="reveal-line"><span class="accent">Scale faster.</span></span>
+    <span class="reveal-line"><span>Transform fully.</span></span>
+  </h1>
+  <p class="hero-sub" id="hs">Two19 Labs is a technology &amp; digital transformation agency. We build custom software, AI automations, and internal tools from scratch — systems that eliminate the manual work killing your team's time. No templates. Ever.</p>
+  <div class="hero-actions" id="ha">
+    <button class="btn-primary"><span>Start a project</span> <span class="arrow">↗</span></button>
+    <button class="btn-ghost">Explore services</button>
+  </div>
+</header>
+
+<!-- MARQUEE -->
+<p class="marquee-label">// what we deliver</p>
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="item">Custom Software</span><span class="item">·</span>
+    <span class="item">AI Automation</span><span class="item">·</span>
+    <span class="item">CTO-as-a-Service</span><span class="item">·</span>
+    <span class="item">Web Development</span><span class="item">·</span>
+    <span class="item">System Integrations</span><span class="item">·</span>
+    <span class="item">Custom Software</span><span class="item">·</span>
+    <span class="item">AI Automation</span><span class="item">·</span>
+    <span class="item">CTO-as-a-Service</span><span class="item">·</span>
+    <span class="item">Web Development</span><span class="item">·</span>
+    <span class="item">System Integrations</span><span class="item">·</span>
+  </div>
+</div>
+
+<!-- WHAT WE DO / STATS -->
+<section id="what">
+  <p class="tag r">what we do</p>
+  <h2 class="sec-h r">We make your business unstoppable.</h2>
+  <p class="sec-p r">We design, develop, and maintain fully custom software solutions that align precisely with your operations and strategic objectives — no off-the-shelf compromises.</p>
+  <div class="stats">
+    <div class="stat r"><div class="num" data-count="100" data-suffix="%">0%</div><div class="lbl">Bespoke builds. No templates.</div></div>
+    <div class="stat r"><div class="num" data-count="3" data-suffix="X">0X</div><div class="lbl">Average efficiency gain for clients.</div></div>
+    <div class="stat r"><div class="num" data-count="7" data-suffix="">0</div><div class="lbl">Core service areas, end to end.</div></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="tag r">our services</p>
+  <h2 class="sec-h r">Everything you need to build &amp; scale.</h2>
+  <div class="svc-grid">
+    <div class="svc r"><div class="n">01</div><span class="go">↗</span><h3>Custom Software Development</h3><p>ERP, CRM, SaaS platforms, customer portals & enterprise apps tailored to your operations.</p></div>
+    <div class="svc r"><div class="n">02</div><span class="go">↗</span><h3>CTO-as-a-Service</h3><p>Strategic tech leadership, scalable architecture, stack selection & team oversight.</p></div>
+    <div class="svc r"><div class="n">03</div><span class="go">↗</span><h3>AI & Automation</h3><p>AI sales assistants, chatbots, workflow automation & intelligent knowledge bases.</p></div>
+    <div class="svc r"><div class="n">04</div><span class="go">↗</span><h3>Web Development</h3><p>High-performance marketing sites, web apps, dashboards & e-commerce storefronts.</p></div>
+    <div class="svc r"><div class="n">05</div><span class="go">↗</span><h3>System Integrations</h3><p>API development, payment gateways, CRM/ERP connectivity & cloud migrations.</p></div>
+    <div class="svc r"><div class="n">06</div><span class="go">↗</span><h3>Support & Maintenance</h3><p>Performance monitoring, security patches, feature upgrades & dedicated accounts.</p></div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section id="industries">
+  <p class="tag r">who we work with</p>
+  <h2 class="sec-h r">Industries we transform.</h2>
+  <div class="ind-marquee">
+    <div class="ind-track">
+      <span class="ind-pill">Music & Entertainment</span><span class="ind-pill">Healthcare & Clinics</span>
+      <span class="ind-pill">Creative Studios</span><span class="ind-pill">D2C E-Commerce</span>
+      <span class="ind-pill">Streetwear & Fashion</span><span class="ind-pill">Logistics & Ops</span>
+      <span class="ind-pill">AI & Productivity Tools</span><span class="ind-pill">Independent Labels</span>
+      <span class="ind-pill">Music & Entertainment</span><span class="ind-pill">Healthcare & Clinics</span>
+      <span class="ind-pill">Creative Studios</span><span class="ind-pill">D2C E-Commerce</span>
+      <span class="ind-pill">Streetwear & Fashion</span><span class="ind-pill">Logistics & Ops</span>
+      <span class="ind-pill">AI & Productivity Tools</span><span class="ind-pill">Independent Labels</span>
+    </div>
+  </div>
+  <div class="ind-marquee">
+    <div class="ind-track rev">
+      <span class="ind-pill">Enterprise SaaS</span><span class="ind-pill">FinTech</span>
+      <span class="ind-pill">Real Estate</span><span class="ind-pill">EdTech</span>
+      <span class="ind-pill">Supply Chain</span><span class="ind-pill">Marketplaces</span>
+      <span class="ind-pill">Internal Tools</span><span class="ind-pill">Customer Portals</span>
+      <span class="ind-pill">Enterprise SaaS</span><span class="ind-pill">FinTech</span>
+      <span class="ind-pill">Real Estate</span><span class="ind-pill">EdTech</span>
+      <span class="ind-pill">Supply Chain</span><span class="ind-pill">Marketplaces</span>
+      <span class="ind-pill">Internal Tools</span><span class="ind-pill">Customer Portals</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <p class="tag r">how we work</p>
+  <h2 class="sec-h r">A process built for precision.</h2>
+  <p class="sec-p r">Every engagement follows a structured process — from the first discovery call through to long-term partnership.</p>
+  <div class="proc">
+    <div class="step r"><div class="sn">01</div><div><h4>Discovery & Requirements</h4><p>Deep-dive into your business, goals, pain points, and existing systems.</p></div></div>
+    <div class="step r"><div class="sn">02</div><div><h4>Strategy & Architecture</h4><p>A tailored technology strategy and system architecture aligned to your objectives.</p></div></div>
+    <div class="step r"><div class="sn">03</div><div><h4>Proposal & Alignment</h4><p>A detailed proposal covering scope, timelines, deliverables, and investment.</p></div></div>
+    <div class="step r"><div class="sn">04</div><div><h4>Design & Development</h4><p>Building and iterating in focused sprints with regular demos and direct access.</p></div></div>
+    <div class="step r"><div class="sn">05</div><div><h4>Quality Assurance & Testing</h4><p>Rigorous functional, performance, security & user-acceptance testing pre-launch.</p></div></div>
+    <div class="step r"><div class="sn">06</div><div><h4>Deployment & Handover</h4><p>Full deployment, go-live coordination, documentation and team onboarding.</p></div></div>
+    <div class="step r"><div class="sn">07</div><div><h4>Ongoing Partnership</h4><p>Post-launch monitoring, improvements, and scaling as your business grows.</p></div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <p class="tag r">frequently asked questions</p>
+  <h2 class="sec-h r">Questions we get asked.</h2>
+  <div class="faq r">
+    <div class="faq-item"><button class="faq-q">What does Two19 Labs actually do?<span class="pm">+</span></button><div class="faq-a"><p>We build tailored software solutions from scratch — internal tools, automated workflows, CRMs, booking systems, e-commerce platforms, and AI-powered applications. Every solution is designed around your specific workflows, processes, and goals rather than forcing you into off-the-shelf tools.</p></div></div>
+    <div class="faq-item"><button class="faq-q">How is your approach different?<span class="pm">+</span></button><div class="faq-a"><p>We start with your problem, not our tech stack. Every solution is 100% bespoke with zero templates. We deliver working prototypes early, keep you in regular demos, and when the project is done, you own everything — no lock-in.</p></div></div>
+    <div class="faq-item"><button class="faq-q">What is AI automation and how can it help?<span class="pm">+</span></button><div class="faq-a"><p>AI automation uses artificial intelligence to handle repetitive tasks, make decisions, and streamline workflows that would otherwise need manual effort — automated data entry, smart scheduling, AI customer communication, document processing, and predictive analytics.</p></div></div>
+    <div class="faq-item"><button class="faq-q">How long does it take to build custom software?<span class="pm">+</span></button><div class="faq-a"><p>We deliver a working prototype quickly and most projects reach full production in a matter of weeks depending on complexity. We move fast because we scope tightly and build iteratively — you test real software early, not static mockups.</p></div></div>
+    <div class="faq-item"><button class="faq-q">Do you work with clients outside your city?<span class="pm">+</span></button><div class="faq-a"><p>Yes. Our process is fully remote-friendly with async communication, regular demos, and complete documentation. We deliver projects for clients across regions and time zones.</p></div></div>
+    <div class="faq-item"><button class="faq-q">How much does custom software cost?<span class="pm">+</span></button><div class="faq-a"><p>Every project is scoped individually based on complexity, timeline, and requirements. We offer transparent, fixed-price proposals after an initial discovery call — no hidden fees, no hourly billing surprises.</p></div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band r">
+  <h2>Ready to be<br>unstoppable?</h2>
+  <p>Let's build something extraordinary together.</p>
+  <button class="btn-primary"><span>Book a discovery call</span> <span class="arrow">↗</span></button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-col">
+    <a href="#" class="logo" style="display:inline-block"><svg class="logo-mark logo-foot" viewBox="0 0 950 385" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="T19"><g transform="translate(0,680) scale(0.1,-0.1)" fill="currentColor"><path d="M0 6530 l0 -180 1616 0 1616 0 87 82 c175 168 271 263 271 270 0 5 -808 8 -1795 8 l-1795 0 0 -180z"/><path d="M4554 6691 l-120 -6 -76 -60 c-41 -33 -109 -86 -149 -117 -41 -31 -145 -111 -231 -178 l-158 -121 0 -220 c0 -174 3 -219 13 -212 12 7 190 145 434 337 67 53 127 96 133 96 7 0 10 -496 10 -1585 l0 -1585 183 2 182 3 0 1825 0 1825 -50 1 c-27 0 -104 -2 -171 -5z"/><path d="M6795 6664 c-111 -17 -317 -82 -417 -133 -266 -133 -505 -373 -630 -631 -82 -170 -119 -318 -125 -507 -8 -220 25 -386 117 -577 40 -86 152 -247 223 -323 43 -47 170 -148 243 -195 153 -98 364 -171 569 -198 155 -20 142 -28 277 150 65 85 118 157 118 160 0 3 -57 3 -127 1 -253 -7 -492 59 -679 187 -67 45 -185 164 -231 233 -176 257 -205 571 -83 887 67 175 230 365 403 472 285 175 655 209 957 87 168 -68 350 -214 445 -358 125 -188 190 -439 166 -641 -32 -263 -113 -446 -313 -709 -34 -46 -103 -140 -153 -208 -102 -140 -614 -829 -830 -1116 -79 -104 -141 -193 -138 -197 2 -5 105 -8 228 -8 l223 0 78 108 c43 59 125 172 182 252 58 80 169 231 247 335 78 105 213 289 300 410 87 121 187 258 221 305 215 292 314 570 314 888 0 116 -18 270 -42 357 -17 60 -87 232 -121 295 -187 351 -548 602 -966 674 -114 19 -328 19 -456 0z"/><path d="M1445 5948 c-3 -7 -4 -663 -3 -1458 l3 -1445 185 0 185 0 0 1455 0 1455 -183 3 c-140 2 -184 0 -187 -10z"/></g><rect x="878" y="314" width="61" height="62" fill="#2540ff"/></svg></a>
+    <p style="color:var(--ink-soft);font-size:14px;margin-top:14px;max-width:240px">Technology & Digital Transformation Agency.</p>
+  </div>
+  <div class="foot-col">
+    <h5>Navigate</h5>
+    <a href="#services">Services</a><a href="#process">How We Work</a><a href="#industries">Industries</a><a href="#faq">FAQ</a>
+  </div>
+  <div class="foot-col">
+    <h5>Company</h5>
+    <a href="#">About</a><a href="#">Portfolio</a><a href="#">Careers</a><a href="#">Contact</a>
+  </div>
+  <div class="foot-col">
+    <h5>Get in touch</h5>
+    <a href="mailto:hello@two19labs.com">hello@two19labs.com</a><a href="#">Book a call ↗</a>
+  </div>
+  <div class="copy">© 2025 Two19 Labs. All rights reserved.</div>
+</footer>
+
+<script>
+// ─── CUSTOM CURSOR ───
+const cur=document.getElementById('cursor');
+let cx=0,cy=0,tx=0,ty=0;
+addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY});
+(function loop(){cx+=(tx-cx)*.18;cy+=(ty-cy)*.18;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(loop)})();
+document.querySelectorAll('a,button,.svc,.faq-q,.ind-pill,.marquee-track .item').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cur.classList.add('grow'));
+  el.addEventListener('mouseleave',()=>cur.classList.remove('grow'));
+});
+
+// ─── NAV SCROLL ───
+addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',scrollY>40)});
+
+// ─── HERO INTRO ───
+addEventListener('load',()=>{
+  setTimeout(()=>document.getElementById('heroH').classList.add('in'),150);
+  const fade=(el,d)=>setTimeout(()=>{el.style.transition='opacity 1s ease,transform 1s cubic-bezier(.16,1,.3,1)';el.style.opacity=1;el.style.transform='none'},d);
+  fade(document.getElementById('hq'),100);
+  fade(document.getElementById('hs'),650);
+  fade(document.getElementById('ha'),800);
+});
+
+// ─── SCROLL REVEAL ───
+const io=new IntersectionObserver((es)=>{
+  es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),(e.target.dataset.delay||0));io.unobserve(e.target)}})
+},{threshold:.15});
+document.querySelectorAll('.r').forEach((el,i)=>{el.dataset.delay=(i%4)*70;io.observe(el)});
+
+// ─── COUNT UP ───
+const counted=new Set();
+const cio=new IntersectionObserver((es)=>{
+  es.forEach(e=>{
+    if(e.isIntersecting && !counted.has(e.target)){
+      counted.add(e.target);
+      const el=e.target,end=+el.dataset.count,suf=el.dataset.suffix||'';
+      let t0=null;const dur=1600;
+      const tick=(t)=>{if(!t0)t0=t;const p=Math.min((t-t0)/dur,1);
+        const eased=1-Math.pow(1-p,3);
+        el.textContent=Math.round(eased*end)+suf;
+        if(p<1)requestAnimationFrame(tick)};
+      requestAnimationFrame(tick);
+    }
+  })
+},{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+
+// ─── FAQ ACCORDION ───
+document.querySelectorAll('.faq-item').forEach(item=>{
+  const q=item.querySelector('.faq-q'),a=item.querySelector('.faq-a');
+  q.addEventListener('click',()=>{
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null});
+    if(!open){item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px'}
+  });
+});
+</script>
+</body>
+</html>

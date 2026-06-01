@@ -26,7 +26,7 @@ await page.evaluate(async () => {
 })
 // Force any not-yet-revealed elements visible so the capture reflects final layout
 await page.evaluate(() => {
-  document.querySelectorAll('[style*="opacity"]').forEach((el) => {
+  document.querySelectorAll('[style*="opacity"], .reveal').forEach((el) => {
     el.style.opacity = '1'
     el.style.transform = 'none'
   })

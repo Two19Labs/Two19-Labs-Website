@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>Two19 Labs — Builders of what's next</title>
+    <meta
+      name="description"
+      content="Two19 Labs builds custom software, AI automations, and internal tools from scratch — systems engineered against the templated grain."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              paper: '#f4f4f1',
+              ink: { DEFAULT: '#0a0a0c', soft: '#5a5a64' },
+              line: '#dcdcd6',
+              blue: { DEFAULT: '#2540ff', deep: '#1b33e6' },
+            },
+            fontFamily: {
+              sans: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+            },
+            letterSpacing: { tightest: '-0.04em', tight2: '-0.03em' },
+            borderRadius: { pill: '100px', band: '28px' },
+          },
+        },
+      }
+    </script>
+    <style>
+      :root { --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); }
+      html { scroll-behavior: smooth; }
+      body { background: #0a0a0c; }
+
+      /* Grain texture overlay */
+      .grain::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.05;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        z-index: 0;
+      }
+
+      .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s var(--ease-spring); }
+      .reveal.in { opacity: 1; transform: none; }
+
+      .link-underline { position: relative; }
+      .link-underline::after {
+        content: ''; position: absolute; left: 0; bottom: -2px; height: 1px; width: 0;
+        background: currentColor; transition: width 0.35s var(--ease-spring);
+      }
+      .link-underline:hover::after, .link-underline:focus-visible::after { width: 100%; }
+
+      .card-shadow { box-shadow: 0 4px 28px 0 rgba(37,64,255,0.10), 0 1.5px 6px 0 rgba(10,10,12,0.08); }
+      .card-shadow-dark { box-shadow: 0 8px 40px 0 rgba(37,64,255,0.18), 0 2px 8px 0 rgba(0,0,0,0.4); }
+
+      .spotlight-card img { transition: transform 0.6s var(--ease-spring); }
+      .spotlight-card:hover img { transform: scale(1.06); }
+
+      *:focus-visible { outline: 2px solid #2540ff; outline-offset: 3px; }
+    </style>
+  </head>
+  <body class="font-sans text-paper antialiased selection:bg-blue selection:text-white">
+    <!-- NAV -->
+    <header class="fixed top-0 inset-x-0 z-50">
+      <div class="mx-auto max-w-[1400px] px-6 md:px-10">
+        <div class="mt-4 flex items-center justify-between rounded-pill border border-white/10 bg-ink/70 px-5 py-3 backdrop-blur-xl">
+          <a href="#top" class="text-2xl font-semibold tracking-tightest text-paper">T19<span class="text-blue">.</span></a>
+          <nav class="hidden items-center gap-8 text-[13px] font-medium text-paper/70 md:flex">
+            <a href="#thesis" class="link-underline transition-colors hover:text-paper">What we build</a>
+            <a href="#spotlight" class="link-underline transition-colors hover:text-paper">Spotlight</a>
+            <a href="#process" class="link-underline transition-colors hover:text-paper">How we work</a>
+            <a href="#news" class="link-underline transition-colors hover:text-paper">Insights</a>
+          </nav>
+          <div class="flex items-center gap-3">
+            <a href="#" aria-label="X" class="hidden h-9 w-9 items-center justify-center rounded-full border border-white/10 text-paper/70 transition-[transform,color,border-color] duration-300 hover:-translate-y-0.5 hover:border-white/30 hover:text-paper active:translate-y-0 sm:flex">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817-5.97 6.817H1.68l7.73-8.835L1.254 2.25h6.83l4.713 6.231 5.447-6.231Zm-1.16 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/></svg>
+            </a>
+            <a href="#pitch" class="inline-flex items-center gap-2 rounded-pill bg-blue px-5 py-2.5 text-[13px] font-semibold text-white transition-[transform,background-color] duration-300 hover:-translate-y-0.5 hover:bg-blue-deep active:translate-y-0">
+              Pitch us <span aria-hidden>↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section id="top" class="grain relative min-h-screen overflow-hidden bg-ink">
+      <div class="pointer-events-none absolute inset-0" style="background:
+        radial-gradient(60% 50% at 50% -5%, rgba(37,64,255,0.45), transparent 70%),
+        radial-gradient(40% 40% at 85% 20%, rgba(37,64,255,0.18), transparent 70%),
+        radial-gradient(50% 50% at 10% 80%, rgba(37,64,255,0.10), transparent 70%);"></div>
+      <div class="relative z-10 mx-auto flex min-h-screen max-w-[1400px] flex-col justify-center px-6 pt-32 pb-20 md:px-10">
+        <p class="reveal mb-8 font-mono text-[12px] uppercase tracking-[0.3em] text-blue">Custom Software · AI Automation · Bengaluru / Remote</p>
+        <h1 class="reveal max-w-[14ch] text-[clamp(2.8rem,8vw,7rem)] font-semibold leading-[0.95] tracking-tightest text-paper" style="transition-delay:.08s">
+          Builders of <br /><span class="text-paper/50">what's next.</span>
+        </h1>
+        <p class="reveal mt-10 max-w-xl text-lg leading-[1.7] text-paper/60" style="transition-delay:.16s">
+          Two19 Labs engineers software, AI automations, and internal tools from scratch — systems built against the templated grain. Tomorrow's operations, shipped today.
+        </p>
+        <div class="reveal mt-12 flex flex-wrap items-center gap-4" style="transition-delay:.24s">
+          <a href="#pitch" class="inline-flex items-center gap-2.5 rounded-pill bg-blue px-8 py-4 text-[15px] font-semibold text-white transition-[transform,background-color] duration-300 hover:-translate-y-0.5 hover:bg-blue-deep active:translate-y-0">Start a project <span aria-hidden>↗</span></a>
+          <a href="#thesis" class="inline-flex items-center rounded-pill border border-white/20 bg-white/[0.04] px-8 py-4 text-[15px] font-semibold text-paper transition-[transform,border-color,background-color] duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/10 active:translate-y-0">What we build</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="bg-paper text-ink">
+      <div class="mx-auto max-w-[1400px] px-6 py-20 md:px-10 md:py-28">
+        <div class="grid grid-cols-2 gap-y-12 border-y border-line py-12 md:grid-cols-4">
+          <div class="reveal px-2"><div class="font-mono text-[12px] uppercase tracking-[0.25em] text-ink-soft">Founded</div><div class="mt-3 text-5xl font-semibold tracking-tightest">2021</div></div>
+          <div class="reveal px-2" style="transition-delay:.08s"><div class="font-mono text-[12px] uppercase tracking-[0.25em] text-ink-soft">Bespoke builds</div><div class="mt-3 text-5xl font-semibold tracking-tightest">100<span class="text-blue">%</span></div></div>
+          <div class="reveal px-2" style="transition-delay:.16s"><div class="font-mono text-[12px] uppercase tracking-[0.25em] text-ink-soft">Efficiency gain</div><div class="mt-3 text-5xl font-semibold tracking-tightest">3<span class="text-blue">X</span></div></div>
+          <div class="reveal px-2" style="transition-delay:.24s"><div class="font-mono text-[12px] uppercase tracking-[0.25em] text-ink-soft">Service areas</div><div class="mt-3 text-5xl font-semibold tracking-tightest">7</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THESIS -->
+    <section id="thesis" class="grain relative overflow-hidden bg-ink">
+      <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(50% 40% at 80% 0%, rgba(37,64,255,0.14), transparent 70%);"></div>
+      <div class="relative z-10 mx-auto max-w-[1400px] px-6 py-24 md:px-10 md:py-36">
+        <div class="max-w-3xl">
+          <p class="reveal font-mono text-[12px] uppercase tracking-[0.3em] text-blue">What we build</p>
+          <h2 class="reveal mt-6 text-[clamp(2rem,5vw,4rem)] font-semibold leading-[1.02] tracking-tightest text-paper" style="transition-delay:.08s">Software that matters.</h2>
+          <p class="reveal mt-6 text-lg leading-[1.7] text-paper/55" style="transition-delay:.16s">We start with your problem, not our stack. Six core disciplines, end to end — every line written for your workflow.</p>
+        </div>
+        <div class="mt-16 grid gap-px overflow-hidden rounded-band border border-white/10 bg-white/10 md:grid-cols-2">
+          <!-- cards injected -->
+          <div id="thesis-cards" class="contents"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPOTLIGHT -->
+    <section id="spotlight" class="bg-paper text-ink">
+      <div class="mx-auto max-w-[1400px] px-6 py-24 md:px-10 md:py-36">
+        <div class="reveal flex items-end justify-between">
+          <h2 class="text-[clamp(2rem,5vw,4rem)] font-semibold leading-[1] tracking-tightest">Spotlight</h2>
+          <span class="hidden font-mono text-[12px] uppercase tracking-[0.25em] text-ink-soft md:block">Industries we power</span>
+        </div>
+        <div id="spotlight-cards" class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" class="grain relative overflow-hidden bg-ink">
+      <div class="relative z-10 mx-auto max-w-[1400px] px-6 py-24 md:px-10 md:py-36">
+        <p class="reveal font-mono text-[12px] uppercase tracking-[0.3em] text-blue">How we work</p>
+        <h2 class="reveal mt-6 max-w-2xl text-[clamp(2rem,5vw,4rem)] font-semibold leading-[1.02] tracking-tightest text-paper" style="transition-delay:.08s">From problem to production, in focused sprints.</h2>
+        <div id="process-list" class="mt-16 divide-y divide-white/10 border-y border-white/10"></div>
+      </div>
+    </section>
+
+    <!-- NEWS / INSIGHTS -->
+    <section id="news" class="bg-paper text-ink">
+      <div class="mx-auto max-w-[1400px] px-6 py-24 md:px-10 md:py-36">
+        <div class="reveal mb-12 flex items-end justify-between">
+          <h2 class="text-[clamp(2rem,5vw,4rem)] font-semibold leading-[1] tracking-tightest">In the field</h2>
+        </div>
+        <div id="news-list" class="divide-y divide-line border-y border-line"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="pitch" class="grain relative overflow-hidden bg-ink">
+      <div class="pointer-events-none absolute inset-0" style="background:
+        radial-gradient(60% 60% at 50% 120%, rgba(37,64,255,0.4), transparent 70%);"></div>
+      <div class="relative z-10 mx-auto max-w-[1400px] px-6 py-28 text-center md:px-10 md:py-44">
+        <p class="reveal font-mono text-[12px] uppercase tracking-[0.3em] text-blue">Got a problem worth solving?</p>
+        <h2 class="reveal mx-auto mt-6 max-w-[16ch] text-[clamp(2.4rem,7vw,6rem)] font-semibold leading-[0.95] tracking-tightest text-paper" style="transition-delay:.08s">Ambitious founder?</h2>
+        <p class="reveal mx-auto mt-8 max-w-xl text-lg leading-[1.7] text-paper/55" style="transition-delay:.16s">Tell us about the manual work killing your team's time. We'll come back with a tight, fixed-price plan — no templates, no lock-in.</p>
+        <a href="mailto:hello@two19labs.com" class="reveal mt-12 inline-flex items-center gap-2.5 rounded-pill bg-blue px-10 py-5 text-[16px] font-semibold text-white transition-[transform,background-color] duration-300 hover:-translate-y-0.5 hover:bg-blue-deep active:translate-y-0" style="transition-delay:.24s">Pitch us <span aria-hidden>↗</span></a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-ink text-paper/60">
+      <div class="mx-auto max-w-[1400px] px-6 py-16 md:px-10">
+        <div class="flex flex-col gap-10 border-t border-white/10 pt-12 md:flex-row md:justify-between">
+          <div class="max-w-sm">
+            <div class="text-2xl font-semibold tracking-tightest text-paper">T19<span class="text-blue">.</span></div>
+            <p class="mt-4 text-sm leading-[1.7]">Two19 Labs — custom software & AI automation, built from scratch. No templates. Ever.</p>
+          </div>
+          <div class="flex gap-16">
+            <div>
+              <div class="font-mono text-[11px] uppercase tracking-[0.25em] text-paper/40">Navigate</div>
+              <ul class="mt-4 space-y-3 text-sm">
+                <li><a href="#thesis" class="link-underline transition-colors hover:text-paper">What we build</a></li>
+                <li><a href="#spotlight" class="link-underline transition-colors hover:text-paper">Spotlight</a></li>
+                <li><a href="#process" class="link-underline transition-colors hover:text-paper">How we work</a></li>
+              </ul>
+            </div>
+            <div>
+              <div class="font-mono text-[11px] uppercase tracking-[0.25em] text-paper/40">Contact</div>
+              <ul class="mt-4 space-y-3 text-sm">
+                <li><a href="mailto:hello@two19labs.com" class="link-underline transition-colors hover:text-paper">hello@two19labs.com</a></li>
+                <li><a href="#" class="link-underline transition-colors hover:text-paper">LinkedIn</a></li>
+                <li><a href="#" class="link-underline transition-colors hover:text-paper">X / Twitter</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="mt-12 flex flex-col gap-3 border-t border-white/10 pt-8 text-[12px] text-paper/40 md:flex-row md:justify-between">
+          <span>© 2026 Two19 Labs. All rights reserved.</span>
+          <a href="#" class="link-underline hover:text-paper">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // --- data ---
+      const thesis = [
+        { n: '01', title: 'Custom Software Development', body: 'ERP, CRM, SaaS platforms, customer portals & enterprise apps tailored to your operations.' },
+        { n: '02', title: 'CTO-as-a-Service', body: 'Strategic tech leadership, scalable architecture, stack selection & team oversight.' },
+        { n: '03', title: 'AI & Automation', body: 'AI sales assistants, chatbots, workflow automation & intelligent knowledge bases.' },
+        { n: '04', title: 'Web Development', body: 'High-performance marketing sites, web apps, dashboards & e-commerce storefronts.' },
+        { n: '05', title: 'System Integrations', body: 'API development, payment gateways, CRM/ERP connectivity & cloud migrations.' },
+        { n: '06', title: 'Support & Maintenance', body: 'Performance monitoring, security patches, feature upgrades & dedicated accounts.' },
+      ]
+      const spotlight = [
+        { tag: 'FinTech', title: 'Payments & ledgers', body: 'Automated reconciliation and real-time financial dashboards.' },
+        { tag: 'Healthcare', title: 'Clinic operations', body: 'Booking, records and patient comms engineered end to end.' },
+        { tag: 'E-Commerce', title: 'D2C storefronts', body: 'High-conversion commerce with custom fulfilment logic.' },
+        { tag: 'Logistics', title: 'Ops & supply chain', body: 'Routing, tracking and inventory intelligence at scale.' },
+        { tag: 'Media', title: 'Labels & studios', body: 'Catalog tooling and royalty automation for creators.' },
+        { tag: 'SaaS', title: 'Internal tools', body: 'Admin panels and workflow engines your team actually uses.' },
+      ]
+      const process = [
+        { n: '01', title: 'Discovery & Requirements', body: 'Deep-dive into your business, goals, pain points, and existing systems.' },
+        { n: '02', title: 'Strategy & Architecture', body: 'A tailored technology strategy and system architecture aligned to your objectives.' },
+        { n: '03', title: 'Design & Development', body: 'Building and iterating in focused sprints with regular demos and direct access.' },
+        { n: '04', title: 'QA & Testing', body: 'Rigorous functional, performance, security & user-acceptance testing pre-launch.' },
+        { n: '05', title: 'Deployment & Handover', body: 'Full deployment, go-live coordination, documentation and team onboarding.' },
+        { n: '06', title: 'Ongoing Partnership', body: 'Post-launch monitoring, improvements, and scaling as your business grows.' },
+      ]
+      const news = [
+        { tag: 'Insight', title: 'Why we never start from a template', date: '2026' },
+        { tag: 'Build', title: 'Shipping a custom CRM in three sprints', date: '2026' },
+        { tag: 'AI', title: 'Automating the work that drains your team', date: '2026' },
+        { tag: 'Field', title: 'What CTO-as-a-Service actually looks like', date: '2026' },
+      ]
+
+      // --- render ---
+      document.getElementById('thesis-cards').innerHTML = thesis.map((c, i) => `
+        <article class="reveal group bg-ink p-8 transition-colors duration-300 hover:bg-white/[0.03] md:p-10" style="transition-delay:${i * 0.06}s">
+          <div class="flex items-baseline justify-between">
+            <span class="font-mono text-sm text-blue">${c.n}</span>
+            <span class="font-mono text-[11px] uppercase tracking-[0.25em] text-paper/30 opacity-0 transition-opacity duration-300 group-hover:opacity-100">→</span>
+          </div>
+          <h3 class="mt-6 text-2xl font-semibold tracking-tight2 text-paper">${c.title}</h3>
+          <p class="mt-3 leading-[1.7] text-paper/55">${c.body}</p>
+        </article>`).join('')
+
+      document.getElementById('spotlight-cards').innerHTML = spotlight.map((c, i) => `
+        <article class="spotlight-card reveal group relative overflow-hidden rounded-band bg-ink card-shadow" style="transition-delay:${i * 0.06}s">
+          <div class="relative h-56 overflow-hidden">
+            <img src="https://placehold.co/600x400/0a0a0c/2540ff?text=${encodeURIComponent(c.tag)}" alt="${c.tag}" class="h-full w-full object-cover" />
+            <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(10,10,12,0.85), rgba(10,10,12,0.1));"></div>
+            <span class="absolute left-5 top-5 rounded-pill border border-white/20 bg-ink/60 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.2em] text-paper backdrop-blur">${c.tag}</span>
+          </div>
+          <div class="p-7">
+            <h3 class="text-xl font-semibold tracking-tight2 text-paper">${c.title}</h3>
+            <p class="mt-2 leading-[1.7] text-paper/55">${c.body}</p>
+          </div>
+        </article>`).join('')
+
+      document.getElementById('process-list').innerHTML = process.map((c, i) => `
+        <div class="reveal group flex flex-col gap-2 py-7 transition-[padding] duration-300 hover:pl-3 md:flex-row md:items-baseline md:gap-10" style="transition-delay:${i * 0.05}s">
+          <span class="font-mono text-sm text-blue md:w-12">${c.n}</span>
+          <h3 class="text-2xl font-semibold tracking-tight2 text-paper md:w-80">${c.title}</h3>
+          <p class="flex-1 leading-[1.7] text-paper/55">${c.body}</p>
+        </div>`).join('')
+
+      document.getElementById('news-list').innerHTML = news.map((c, i) => `
+        <a href="#" class="reveal group flex items-center justify-between gap-6 py-7 transition-[padding] duration-300 hover:pl-3" style="transition-delay:${i * 0.05}s">
+          <div class="flex items-baseline gap-6">
+            <span class="font-mono text-[11px] uppercase tracking-[0.25em] text-blue">${c.tag}</span>
+            <h3 class="text-xl font-semibold tracking-tight2 text-ink md:text-2xl">${c.title}</h3>
+          </div>
+          <span class="shrink-0 font-mono text-[12px] text-ink-soft transition-transform duration-300 group-hover:translate-x-1">${c.date} →</span>
+        </a>`).join('')
+
+      // --- reveal on scroll ---
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } })
+      }, { threshold: 0.12 })
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el))
+    </script>
+  </body>
+</html>

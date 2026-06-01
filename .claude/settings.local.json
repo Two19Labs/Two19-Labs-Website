@@ -8,7 +8,8 @@
       "Bash(python -c \"import rembg; print\\('rembg ok'\\)\")",
       "Bash(python -c \"from PIL import Image; print\\('PIL ok'\\)\")",
       "PowerShell(python -c \"import rembg; print\\('rembg ok'\\)\" 2>&1; python -c \"from PIL import Image; print\\('PIL ok'\\)\" 2>&1)",
-      "PowerShell(py *)"
+      "PowerShell(py *)",
+      "Bash(npm run *)"
     ]
   }
 }
