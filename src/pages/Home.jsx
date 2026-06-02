@@ -1,4 +1,4 @@
-import Seo from '../components/Seo'
+import Seo, { OrganizationSchema } from '../components/Seo'
 import Hero from '../components/Hero'
 import Marquee from '../components/Marquee'
 import WhatWeDo from '../components/WhatWeDo'
@@ -17,6 +17,7 @@ export default function Home() {
         description="Two19 Labs builds custom software, AI-powered workflows, and automation systems from scratch. A technology and digital transformation agency. No templates. No off-the-shelf solutions."
         path="/"
       />
+      <OrganizationSchema />
       <Hero />
       <Marquee />
       <WhatWeDo />

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://two19labs.in/sitemap.xml

@@ -58,4 +58,19 @@ for (const route of routes) {
 
 await browser.close()
 server.close()
+
+// Sitemap covering every prerendered route, sharing the same source of truth.
+const SITE = 'https://two19labs.in'
+const today = new Date().toISOString().slice(0, 10)
+const urls = routes
+  .map((route) => {
+    const loc = `${SITE}${route === '/' ? '' : route}`
+    const priority = route === '/' ? '1.0' : '0.8'
+    return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>${priority}</priority>\n  </url>`
+  })
+  .join('\n')
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`
+await writeFile(join(DIST, 'sitemap.xml'), sitemap, 'utf8')
+console.log(`wrote sitemap.xml (${routes.length} urls)`)
+
 console.log('prerender done')

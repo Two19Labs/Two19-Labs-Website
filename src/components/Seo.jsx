@@ -5,6 +5,41 @@ export const SITE_URL = 'https://two19labs.in'
 export const SITE_NAME = 'Two19 Labs'
 const DEFAULT_OG = `${SITE_URL}/og-image.png`
 
+// Official profiles. Drives JSON-LD `sameAs`, which Google uses to tie this site
+// to the brand (knowledge panel). TODO: replace with the real profile URLs.
+export const SOCIAL_LINKS = [
+  // 'https://www.linkedin.com/company/two19labs',
+  // 'https://www.instagram.com/two19labs',
+  // 'https://twitter.com/two19labs',
+]
+
+/** Organization + WebSite structured data. Render once, on the home page. */
+export function OrganizationSchema() {
+  const data = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: `${SITE_URL}/logo.png`,
+      description:
+        'Two19 Labs builds custom software, AI-powered workflows, and automation systems from scratch.',
+      ...(SOCIAL_LINKS.length ? { sameAs: SOCIAL_LINKS } : {}),
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+  ]
+  return (
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify(data)}</script>
+    </Helmet>
+  )
+}
+
 /**
  * Per-route <head>. Renders a unique title, description, canonical URL and a
  * full Open Graph + Twitter card set into the served HTML (captured at
