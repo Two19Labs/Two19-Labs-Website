@@ -2,12 +2,31 @@
 // SPA-fallback server over ./dist, visits each route in a headless browser, and
 // writes the fully-rendered HTML back to dist/<route>/index.html. Crawlers and the
 // first paint now get real content + per-route <head>; the client hydrates on top.
-import puppeteer from 'puppeteer'
 import { createServer } from 'http'
 import { readFile, mkdir, writeFile } from 'fs/promises'
 import { existsSync } from 'fs'
 import { extname, join, normalize, dirname } from 'path'
 import { services } from '../src/data/content.js'
+
+// Launch Chromium. Local dev uses the full `puppeteer` (bundled Chrome). CI build
+// containers (Vercel) lack the shared libraries a plain Chrome needs, so there we
+// use @sparticuz/chromium (a self-contained Chromium) via puppeteer-core.
+async function launchBrowser() {
+  if (process.env.VERCEL || process.env.CI) {
+    const chromium = (await import('@sparticuz/chromium')).default
+    const puppeteer = (await import('puppeteer-core')).default
+    return puppeteer.launch({
+      args: chromium.args,
+      executablePath: await chromium.executablePath(),
+      headless: true,
+    })
+  }
+  const puppeteer = (await import('puppeteer')).default
+  return puppeteer.launch({
+    headless: 'new',
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  })
+}
 
 const DIST = join(process.cwd(), 'dist')
 const PORT = 4178
@@ -39,11 +58,7 @@ const server = createServer(async (req, res) => {
 await new Promise((r) => server.listen(PORT, r))
 console.log(`prerender server on :${PORT}`)
 
-// --no-sandbox is required to launch Chromium in CI build containers (Vercel).
-const browser = await puppeteer.launch({
-  headless: 'new',
-  args: ['--no-sandbox', '--disable-setuid-sandbox'],
-})
+const browser = await launchBrowser()
 
 for (const route of routes) {
   const page = await browser.newPage()
