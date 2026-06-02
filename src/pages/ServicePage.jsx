@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { services, serviceDetails } from '../data/content'
+import Seo from '../components/Seo'
 import Reveal from '../components/Reveal'
 import Roadmap from '../components/Roadmap'
 import CTA from '../components/CTA'
@@ -13,8 +14,15 @@ export default function ServicePage() {
 
   if (!service) return <NotFound />
 
+  const description = detail?.promise || detail?.overview || service.body
+
   return (
     <main>
+      <Seo
+        title={service.title}
+        description={description}
+        path={`/services/${slug}`}
+      />
       <Intro service={service} detail={detail} />
       {detail?.included?.length > 0 && <Included items={detail.included} />}
       {detail?.steps?.length > 0 && <Steps steps={detail.steps} />}
