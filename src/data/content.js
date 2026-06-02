@@ -24,7 +24,7 @@ export const clients = [
   { name: 'Ghoomar Village', logo: '/clients/village-logo.png' },
   { name: 'Ashirvad', logo: '/clients/Ashirvad.svg' },
   { name: 'ITC Limited', logo: '/clients/ITC_Limited_Logo.svg.png' },
-  { name: 'Client Four' },
+  { name: "Masters' Union", logo: '/clients/masters-union.png' },
   { name: 'Client Five' },
   { name: 'Client Six' },
 ]
