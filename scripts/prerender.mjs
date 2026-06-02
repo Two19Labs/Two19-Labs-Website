@@ -39,10 +39,27 @@ const server = createServer(async (req, res) => {
 await new Promise((r) => server.listen(PORT, r))
 console.log(`prerender server on :${PORT}`)
 
-const browser = await puppeteer.launch({ headless: 'new' })
+// --no-sandbox is required to launch Chromium in CI build containers (Vercel).
+const browser = await puppeteer.launch({
+  headless: 'new',
+  args: ['--no-sandbox', '--disable-setuid-sandbox'],
+})
 
 for (const route of routes) {
   const page = await browser.newPage()
+  // Neutralise scroll/in-view animations (useReveal, useCountUp, framer whileInView)
+  // so the snapshot is the components' INITIAL state — byte-identical to the client's
+  // first render. Without this, animations fire during load and the captured HTML
+  // drifts from the client, causing hydration mismatches. Real visitors keep the real
+  // IntersectionObserver and see every animation after hydration.
+  await page.evaluateOnNewDocument(() => {
+    window.IntersectionObserver = class {
+      observe() {}
+      unobserve() {}
+      disconnect() {}
+      takeRecords() { return [] }
+    }
+  })
   await page.goto(`http://localhost:${PORT}${route}`, { waitUntil: 'networkidle0', timeout: 60000 })
   // Wait until React has painted real content into #root.
   await page.waitForFunction(() => document.querySelector('#root')?.children.length > 0, { timeout: 15000 })
