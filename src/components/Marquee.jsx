@@ -11,7 +11,7 @@ export default function Marquee() {
         </div>
       </div>
       <div className="group relative overflow-hidden border-y border-line bg-paper py-[34px]">
-        <div className="flex w-max items-center gap-20 animate-scroll group-hover:[animation-play-state:paused]">
+        <div className="flex w-max items-center gap-20 [animation:scroll_18s_linear_infinite] group-hover:[animation-play-state:paused] md:[animation:scroll_28s_linear_infinite]">
           {items.map((c, i) => (
             <div key={i} className="flex shrink-0 items-center justify-center">
               {c.logo ? (
