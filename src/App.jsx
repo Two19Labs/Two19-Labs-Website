@@ -1,29 +1,20 @@
+import { Routes, Route } from 'react-router-dom'
 import Cursor from './components/Cursor'
 import Nav from './components/Nav'
-import Hero from './components/Hero'
-import Marquee from './components/Marquee'
-import WhatWeDo from './components/WhatWeDo'
-import Services from './components/Services'
-import Industries from './components/Industries'
-import Process from './components/Process'
-import FAQ from './components/FAQ'
-import CTA from './components/CTA'
-import Footer from './components/Footer'
+import ScrollManager from './components/ScrollManager'
+import Home from './pages/Home'
+import ServicePage from './pages/ServicePage'
 
 export default function App() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden">
+    <div className="relative min-h-screen [overflow-x:clip]">
       <Cursor />
+      <ScrollManager />
       <Nav />
-      <Hero />
-      <Marquee />
-      <WhatWeDo />
-      <Services />
-      <Industries />
-      <Process />
-      <FAQ />
-      <CTA />
-      <Footer />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/services/:slug" element={<ServicePage />} />
+      </Routes>
     </div>
   )
 }

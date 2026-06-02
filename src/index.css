@@ -23,7 +23,8 @@
   body {
     @apply bg-paper text-ink font-sans antialiased;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    /* clip (not hidden) so it doesn't create a scroll container that breaks position:sticky */
+    overflow-x: clip;
   }
 
   ::selection {

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { nav } from '../data/content'
 import Logo from './Logo'
 import { GlassFilter } from './ui/liquid-glass'
@@ -118,13 +119,13 @@ export default function Nav() {
             }}
           />
 
-          <a
-            href="#home"
+          <Link
+            to="/"
             aria-label="Two19 Labs home"
             className="relative z-30 inline-flex items-center text-current"
           >
             <Logo className="h-[26px] w-auto" />
-          </a>
+          </Link>
 
           {/* Desktop links — absolutely centered so they sit at the bar's true center
               and glide with the width as it morphs into the pill */}

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { services } from '../data/content'
 import Reveal from './Reveal'
 
@@ -13,6 +14,8 @@ export default function Services() {
         <div className="mt-10 grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 md:mt-[72px] lg:grid-cols-3">
           {services.map((s, i) => (
             <Reveal
+              as={Link}
+              to={`/services/${s.slug}`}
               key={s.n}
               delay={(i % 3) * 70}
               className="group relative flex min-h-[200px] cursor-pointer flex-col overflow-hidden bg-paper p-7 transition-colors duration-500 hover:bg-card md:min-h-[280px] md:p-10"

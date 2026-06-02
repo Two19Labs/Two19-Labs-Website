@@ -11,10 +11,19 @@ export default function Cursor() {
     const cur = ref.current
     if (!cur) return
 
-    let cx = 0, cy = 0, tx = 0, ty = 0, raf
+    let cx = 0, cy = 0, tx = 0, ty = 0, raf, started = false
     const onMove = (e) => {
       tx = e.clientX
       ty = e.clientY
+      // First real movement: snap to position + reveal (avoids the corner blob
+      // and any load-time grow state showing before the cursor is placed).
+      if (!started) {
+        started = true
+        cx = tx
+        cy = ty
+        cur.classList.remove('grow')
+        cur.style.opacity = '1'
+      }
     }
     const loop = () => {
       cx += (tx - cx) * 0.18
@@ -26,23 +35,23 @@ export default function Cursor() {
     window.addEventListener('mousemove', onMove)
     raf = requestAnimationFrame(loop)
 
-    const grow = () => cur.classList.add('grow')
-    const shrink = () => cur.classList.remove('grow')
-    const targets = document.querySelectorAll(
-      'a,button,[data-cursor="grow"]'
-    )
-    targets.forEach((el) => {
-      el.addEventListener('mouseenter', grow)
-      el.addEventListener('mouseleave', shrink)
-    })
+    // Delegation: works for elements added later (e.g. after route changes),
+    // not just those present at mount.
+    const SEL = 'a,button,[data-cursor="grow"]'
+    const onOver = (e) => {
+      if (e.target.closest(SEL)) cur.classList.add('grow')
+    }
+    const onOut = (e) => {
+      if (e.target.closest(SEL)) cur.classList.remove('grow')
+    }
+    document.addEventListener('mouseover', onOver)
+    document.addEventListener('mouseout', onOut)
 
     return () => {
       cancelAnimationFrame(raf)
       window.removeEventListener('mousemove', onMove)
-      targets.forEach((el) => {
-        el.removeEventListener('mouseenter', grow)
-        el.removeEventListener('mouseleave', shrink)
-      })
+      document.removeEventListener('mouseover', onOver)
+      document.removeEventListener('mouseout', onOut)
     }
   }, [])
 
@@ -51,7 +60,7 @@ export default function Cursor() {
       ref={ref}
       aria-hidden
       className="cursor-dot pointer-events-none fixed left-0 top-0 z-[9999] hidden h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue md:block"
-      style={{ mixBlendMode: 'difference' }}
+      style={{ mixBlendMode: 'difference', opacity: 0 }}
     />
   )
 }
