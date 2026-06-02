@@ -49,7 +49,9 @@ export default function Footer() {
       </div>
 
       <div className="mt-5 w-full border-t border-line pt-10 font-mono text-xs text-ink-soft">
-        © {new Date().getFullYear()} Two19 Labs. All rights reserved.
+        {/* Single text node (no static+{expr}+static split) so the prerendered
+            HTML hydrates cleanly — adjacent text nodes merge on serialization. */}
+        {`© ${new Date().getFullYear()} Two19 Labs. All rights reserved.`}
       </div>
     </footer>
   )

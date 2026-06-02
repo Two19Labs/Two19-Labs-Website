@@ -1,4 +1,4 @@
-export const EMAIL = 'hello@two19labs.com'
+export const EMAIL = 'two19labs@gmail.com'
 
 export const nav = [
   { label: 'Services', href: '/#services' },
