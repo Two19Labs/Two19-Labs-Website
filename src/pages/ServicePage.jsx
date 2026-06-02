@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { services, serviceDetails } from '../data/content'
+import { services, serviceDetails, PHONE } from '../data/content'
 import Seo from '../components/Seo'
 import Reveal from '../components/Reveal'
 import Roadmap from '../components/Roadmap'
@@ -65,9 +65,9 @@ function Intro({ service, detail }) {
         )}
 
         <Reveal delay={240} className="mt-10 flex flex-wrap items-center gap-4">
-          <button className="btn-primary">
+          <a href={`tel:${PHONE}`} className="btn-primary">
             <span>Book a call</span> <span className="arrow">↗</span>
-          </button>
+          </a>
           <Link to="/#services" className="btn-ghost">
             All services
           </Link>

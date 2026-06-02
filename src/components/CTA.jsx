@@ -1,4 +1,5 @@
 import Reveal from './Reveal'
+import { PHONE } from '../data/content'
 
 export default function CTA() {
   return (
@@ -12,9 +13,9 @@ export default function CTA() {
         unstoppable?
       </h2>
       <p className="mb-10 text-lg text-[#9a9aa6]">Let's build something extraordinary together.</p>
-      <button className="btn-primary cta-btn">
+      <a href={`tel:${PHONE}`} className="btn-primary cta-btn">
         <span>Book a discovery call</span> <span className="arrow">↗</span>
-      </button>
+      </a>
     </Reveal>
   )
 }

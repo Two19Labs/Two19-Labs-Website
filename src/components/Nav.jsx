@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { nav } from '../data/content'
+import { nav, PHONE } from '../data/content'
 import Logo from './Logo'
 import { GlassFilter } from './ui/liquid-glass'
 
@@ -142,13 +142,14 @@ export default function Nav() {
           </div>
 
           {/* Book a call — pinned right */}
-          <button
-            className={`relative z-30 hidden rounded-pill border border-current px-5 py-2.5 text-[13px] font-semibold transition-colors duration-300 md:inline-flex ${
+          <a
+            href={`tel:${PHONE}`}
+            className={`relative z-30 hidden items-center rounded-pill border border-current px-5 py-2.5 text-[13px] font-semibold transition-colors duration-300 md:inline-flex ${
               scrolled ? 'hover:bg-ink hover:text-white' : 'hover:bg-white hover:text-ink'
             }`}
           >
             Book a call
-          </button>
+          </a>
 
           {/* Mobile hamburger */}
           <button
@@ -196,12 +197,13 @@ export default function Nav() {
           ))}
         </div>
 
-        <button
+        <a
+          href={`tel:${PHONE}`}
           onClick={() => setOpen(false)}
-          className="w-full rounded-pill bg-blue py-4 text-[15px] font-semibold text-white transition-colors hover:bg-[#1b33e6]"
+          className="block w-full rounded-pill bg-blue py-4 text-center text-[15px] font-semibold text-white transition-colors hover:bg-[#1b33e6]"
         >
           Book a call
-        </button>
+        </a>
       </div>
     </>
   )

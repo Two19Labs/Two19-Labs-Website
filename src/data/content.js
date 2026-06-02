@@ -1,4 +1,5 @@
 export const EMAIL = 'two19labs@gmail.com'
+export const PHONE = '+919834722416'
 
 export const nav = [
   { label: 'Services', href: '/#services' },

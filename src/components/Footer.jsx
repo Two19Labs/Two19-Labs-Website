@@ -1,4 +1,4 @@
-import { EMAIL, footerCols } from '../data/content'
+import { EMAIL, PHONE, footerCols } from '../data/content'
 import Logo from './Logo'
 
 export default function Footer() {
@@ -41,7 +41,7 @@ export default function Footer() {
           {EMAIL}
         </a>
         <a
-          href="#"
+          href={`tel:${PHONE}`}
           className="mb-2.5 block text-[15px] text-ink opacity-75 transition-[opacity,color] duration-300 hover:text-blue hover:opacity-100"
         >
           Book a call ↗
