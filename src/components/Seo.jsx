@@ -8,7 +8,7 @@ const DEFAULT_OG = `${SITE_URL}/og-image.png`
 // Official profiles. Drives JSON-LD `sameAs`, which Google uses to tie this site
 // to the brand (knowledge panel). TODO: replace with the real profile URLs.
 export const SOCIAL_LINKS = [
-  // 'https://www.linkedin.com/company/two19labs',
+  'https://www.linkedin.com/company/two19-labs/',
   // 'https://www.instagram.com/two19labs',
   // 'https://twitter.com/two19labs',
 ]
@@ -22,6 +22,7 @@ export function OrganizationSchema() {
       name: SITE_NAME,
       url: SITE_URL,
       logo: `${SITE_URL}/logo.png`,
+      email: 'two19labs@gmail.com',
       description:
         'Two19 Labs builds custom software, AI-powered workflows, and automation systems from scratch.',
       ...(SOCIAL_LINKS.length ? { sameAs: SOCIAL_LINKS } : {}),
