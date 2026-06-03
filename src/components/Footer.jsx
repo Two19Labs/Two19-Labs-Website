@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { EMAIL, PHONE, footerCols } from '../data/content'
 import Logo from './Logo'
 
@@ -18,15 +19,25 @@ export default function Footer() {
           <h5 className="mb-4 font-mono text-xs uppercase tracking-[0.05em] text-ink-soft">
             {col.heading}
           </h5>
-          {col.links.map((l) => (
-            <a
-              key={l.label}
-              href={l.href}
-              className="mb-2.5 block text-[15px] text-ink opacity-75 transition-[opacity,color] duration-300 hover:text-blue hover:opacity-100"
-            >
-              {l.label}
-            </a>
-          ))}
+          {col.links.map((l) =>
+            l.href.startsWith('/') && !l.href.startsWith('/#') ? (
+              <Link
+                key={l.label}
+                to={l.href}
+                className="mb-2.5 block text-[15px] text-ink opacity-75 transition-[opacity,color] duration-300 hover:text-blue hover:opacity-100"
+              >
+                {l.label}
+              </Link>
+            ) : (
+              <a
+                key={l.label}
+                href={l.href}
+                className="mb-2.5 block text-[15px] text-ink opacity-75 transition-[opacity,color] duration-300 hover:text-blue hover:opacity-100"
+              >
+                {l.label}
+              </a>
+            )
+          )}
         </div>
       ))}
 

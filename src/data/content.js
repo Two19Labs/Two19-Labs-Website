@@ -3,6 +3,7 @@ export const PHONE = '+919834722416'
 
 export const nav = [
   { label: 'Services', href: '/#services' },
+  { label: 'Portfolio', href: '/portfolio' },
   { label: 'How We Work', href: '/#process' },
   { label: 'Industries', href: '/#industries' },
   { label: 'FAQ', href: '/#faq' },
@@ -398,11 +399,89 @@ export const faqs = [
   },
 ]
 
+export const portfolioCategories = ['All', 'Web Development', 'AI & Automation', 'Custom Software', 'Internal Tools']
+
+export const portfolioProjects = [
+  {
+    id: 1,
+    title: 'ERP & Operations Portal',
+    client: 'Confidential Client',
+    location: 'Delhi, India',
+    category: 'Custom Software',
+    description: 'Unified internal portal replacing five disconnected spreadsheets — covering inventory, HR, billing, and scheduling in one system owned fully by the client.',
+    result: '3 hrs saved per day on admin',
+    tags: ['React', 'Node.js', 'PostgreSQL', 'REST APIs'],
+    status: 'live',
+    image: null,
+  },
+  {
+    id: 2,
+    title: 'Corporate Website Rebuild',
+    client: 'Ghoomar Village',
+    location: 'Delhi, India',
+    category: 'Web Development',
+    description: 'Full redesign and rebuild of a hospitality brand\'s marketing site. Performance-first, SEO-optimised, mobile-native, and editable by the client team.',
+    result: 'Core Web Vitals: all green',
+    tags: ['React', 'Vite', 'Tailwind', 'SEO'],
+    status: 'live',
+    image: null,
+  },
+  {
+    id: 3,
+    title: 'AI Lead Qualification Bot',
+    client: 'Confidential Client',
+    location: 'Bangalore, India',
+    category: 'AI & Automation',
+    description: 'AI-powered sales assistant that qualifies inbound leads, books meetings, and auto-follows up — 24/7 without human intervention across multiple channels.',
+    result: '2× booked meetings, zero extra headcount',
+    tags: ['Claude API', 'Webhooks', 'n8n', 'Python'],
+    status: 'live',
+    image: null,
+  },
+  {
+    id: 4,
+    title: 'E-Commerce Storefront',
+    client: 'Confidential Client',
+    location: 'Mumbai, India',
+    category: 'Web Development',
+    description: 'Custom storefront built from scratch with a streamlined checkout, live inventory sync, and headless CMS so the marketing team can publish without dev help.',
+    result: '40% lift in checkout conversion',
+    tags: ['Next.js', 'Shopify', 'Tailwind', 'Sanity'],
+    status: 'live',
+    image: null,
+  },
+  {
+    id: 5,
+    title: 'Document Automation Suite',
+    client: 'Confidential Client',
+    location: 'Hyderabad, India',
+    category: 'AI & Automation',
+    description: 'End-to-end automation of document intake, classification, and routing — replacing a multi-person manual review process with an AI pipeline.',
+    result: '80% reduction in processing time',
+    tags: ['Python', 'LangChain', 'Zapier', 'pgvector'],
+    status: 'live',
+    image: null,
+  },
+  {
+    id: 6,
+    title: 'Live Operations Dashboard',
+    client: 'Confidential Client',
+    location: 'NCR, India',
+    category: 'Internal Tools',
+    description: 'Real-time dashboard pulling from four data sources — giving leadership a single view of KPIs, orders, and financials. Replaced a sprawl of spreadsheets.',
+    result: 'Decisions 2× faster, reports eliminated',
+    tags: ['React', 'PostgreSQL', 'REST APIs', 'Recharts'],
+    status: 'live',
+    image: null,
+  },
+]
+
 export const footerCols = [
   {
     heading: 'Navigate',
     links: [
       { label: 'Services', href: '/#services' },
+      { label: 'Portfolio', href: '/portfolio' },
       { label: 'How We Work', href: '/#process' },
       { label: 'Industries', href: '/#industries' },
       { label: 'FAQ', href: '/#faq' },

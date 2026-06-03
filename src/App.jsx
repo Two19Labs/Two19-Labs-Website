@@ -4,6 +4,7 @@ import Nav from './components/Nav'
 import ScrollManager from './components/ScrollManager'
 import Home from './pages/Home'
 import ServicePage from './pages/ServicePage'
+import Portfolio from './pages/Portfolio'
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services/:slug" element={<ServicePage />} />
+        <Route path="/portfolio" element={<Portfolio />} />
       </Routes>
     </div>
   )

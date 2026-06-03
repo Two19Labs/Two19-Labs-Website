@@ -130,15 +130,25 @@ export default function Nav() {
           {/* Desktop links — absolutely centered so they sit at the bar's true center
               and glide with the width as it morphs into the pill */}
           <div className="absolute left-1/2 z-30 hidden -translate-x-1/2 items-center gap-9 md:flex">
-            {nav.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-sm font-medium text-current opacity-85 transition-opacity duration-300 hover:opacity-100"
-              >
-                {item.label}
-              </a>
-            ))}
+            {nav.map((item) =>
+              item.href.startsWith('/') && !item.href.startsWith('/#') ? (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className="whitespace-nowrap text-sm font-medium text-current opacity-85 transition-opacity duration-300 hover:opacity-100"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="whitespace-nowrap text-sm font-medium text-current opacity-85 transition-opacity duration-300 hover:opacity-100"
+                >
+                  {item.label}
+                </a>
+              )
+            )}
           </div>
 
           {/* Book a call — pinned right */}
@@ -185,16 +195,27 @@ export default function Nav() {
         </div>
 
         <div className="flex flex-1 flex-col justify-center gap-2">
-          {nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className="border-b border-white/10 py-5 text-3xl font-semibold tracking-tight text-white transition-colors hover:text-blue"
-            >
-              {item.label}
-            </a>
-          ))}
+          {nav.map((item) =>
+            item.href.startsWith('/') && !item.href.startsWith('/#') ? (
+              <Link
+                key={item.href}
+                to={item.href}
+                onClick={() => setOpen(false)}
+                className="border-b border-white/10 py-5 text-3xl font-semibold tracking-tight text-white transition-colors hover:text-blue"
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="border-b border-white/10 py-5 text-3xl font-semibold tracking-tight text-white transition-colors hover:text-blue"
+              >
+                {item.label}
+              </a>
+            )
+          )}
         </div>
 
         <a
