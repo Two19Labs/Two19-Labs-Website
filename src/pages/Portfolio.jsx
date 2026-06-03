@@ -106,6 +106,7 @@ function ProjectCard({ project, index, onClick }) {
   return (
     <Reveal
       delay={(index % 3) * 50}
+      data-cursor="grow"
       className="group cursor-pointer overflow-hidden rounded-band border border-line bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.12)]"
       onClick={onClick}
     >
