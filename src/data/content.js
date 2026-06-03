@@ -26,7 +26,7 @@ export const clients = [
   { name: 'ITC Limited', logo: '/clients/ITC_Limited_Logo.svg.png' },
   { name: "Masters' Union", logo: '/clients/masters-union.png' },
   { name: 'University of Delhi', logo: '/clients/university-of-delhi.png' },
-  { name: 'Client Six' },
+  { name: 'Cafe Delhi Heights', logo: '/clients/cafe-delhi-heights.png' },
 ]
 
 export const stats = [
