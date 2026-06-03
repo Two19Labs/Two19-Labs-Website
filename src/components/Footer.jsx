@@ -13,7 +13,7 @@ export default function Footer() {
         </p>
       </div>
 
-      {footerCols.map((col) => (
+      {footerCols.filter((col) => !col.hidden).map((col) => (
         <div key={col.heading}>
           <h5 className="mb-4 font-mono text-xs uppercase tracking-[0.05em] text-ink-soft">
             {col.heading}

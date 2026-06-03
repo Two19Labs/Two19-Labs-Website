@@ -410,6 +410,7 @@ export const footerCols = [
   },
   {
     heading: 'Company',
+    hidden: true, // temporarily hidden in the footer; data kept for easy restore
     links: [
       { label: 'About', href: '#' },
       { label: 'Portfolio', href: '#' },
