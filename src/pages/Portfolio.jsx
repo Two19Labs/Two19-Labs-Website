@@ -137,7 +137,7 @@ function ProjectCard({ project, index, onClick }) {
       {/* Info */}
       <div className="p-5 sm:p-6">
         <div className="mb-2.5 flex items-center gap-2">
-          <span className="font-mono text-[11px] text-blue">{String(project.id).padStart(2, '0')}</span>
+          <span className="font-mono text-[11px] text-blue">{String(index + 1).padStart(2, '0')}</span>
           <span className="rounded-pill border border-line bg-paper px-2.5 py-0.5 text-[11px] font-medium text-ink-soft">
             {project.category}
           </span>
