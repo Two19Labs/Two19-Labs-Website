@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Seo from '../components/Seo'
 import Reveal from '../components/Reveal'
 import CTA from '../components/CTA'
@@ -13,11 +13,17 @@ const STATUS_STYLES = {
 
 export default function Portfolio() {
   const [active, setActive] = useState('All')
+  const [selected, setSelected] = useState(null)
 
   const filtered =
     active === 'All'
       ? portfolioProjects
       : portfolioProjects.filter((p) => p.category === active)
+
+  useEffect(() => {
+    document.body.style.overflow = selected ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [selected])
 
   return (
     <main>
@@ -36,7 +42,7 @@ export default function Portfolio() {
             {' '}Measured in real results.
           </Reveal>
           <Reveal as="p" delay={130} className="sec-p mt-5 sm:mt-6">
-            Every project is bespoke — no templates, no filler. Here's a selection of what we've shipped.
+            Every project is bespoke — no templates, no filler. Click any card to see the full story.
           </Reveal>
         </div>
       </section>
@@ -62,114 +68,215 @@ export default function Portfolio() {
         </div>
       </div>
 
-      {/* ── Project list ─────────────────────────────────────────── */}
-      <section className="section pt-0 md:pt-0">
+      {/* ── Card grid ────────────────────────────────────────────── */}
+      <section className="section pt-10 md:pt-14">
         <div className="container-x">
           {filtered.length === 0 ? (
-            <Reveal className="py-16 text-center text-ink-soft sm:py-20">
-              No projects in this category yet.
-            </Reveal>
+            <Reveal className="py-16 text-center text-ink-soft">No projects in this category yet.</Reveal>
           ) : (
-            <div className="mt-8 flex flex-col divide-y divide-line sm:mt-10 md:mt-14">
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
               {filtered.map((project, i) => (
-                <ProjectCard key={project.id} project={project} index={i} />
+                <ProjectCard
+                  key={project.id}
+                  project={project}
+                  index={i}
+                  onClick={() => setSelected(project)}
+                />
               ))}
             </div>
           )}
         </div>
       </section>
 
-      <CTA />
-      <Footer />
+      {/* ── Modal ────────────────────────────────────────────────── */}
+      {selected && (
+        <ProjectModal project={selected} onClose={() => setSelected(null)} />
+      )}
+
+      <div className="mt-16 md:mt-[100px]">
+        <CTA />
+        <Footer />
+      </div>
     </main>
   )
 }
 
-function ProjectCard({ project, index }) {
-  const flip = index % 2 === 1
-
+/* ── Compact card ────────────────────────────────────────────────── */
+function ProjectCard({ project, index, onClick }) {
   return (
     <Reveal
-      delay={(index % 3) * 60}
-      className="group grid grid-cols-1 gap-8 py-10 sm:gap-10 sm:py-12 md:gap-12 md:py-16 lg:grid-cols-2 lg:gap-16 lg:py-20 xl:gap-24"
+      delay={(index % 3) * 50}
+      className="group cursor-pointer overflow-hidden rounded-band border border-line bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.12)]"
+      onClick={onClick}
     >
-      {/* Content */}
-      <div className={`flex flex-col justify-center ${flip ? 'lg:order-2' : 'lg:order-1'}`}>
-        {/* Meta row */}
-        <div className="mb-4 flex flex-wrap items-center gap-2 sm:mb-5 sm:gap-3">
-          <span className="font-mono text-[11px] text-blue sm:text-[12px]">
-            {String(index + 1).padStart(2, '0')}
-          </span>
-          <span className="rounded-pill border border-line bg-card px-3 py-1 text-[11px] font-medium text-ink-soft sm:text-[12px]">
-            {project.category}
-          </span>
-          <span
-            className={`rounded-pill border px-3 py-1 text-[11px] font-semibold sm:text-[12px] ${STATUS_STYLES[project.status] ?? STATUS_STYLES.live}`}
-          >
-            {project.status}
-          </span>
-        </div>
-
-        {/* Title */}
-        <h2
-          className="mb-1 font-semibold leading-[1.12] tracking-tight2"
-          style={{ fontSize: 'clamp(22px, 3.5vw, 36px)' }}
-        >
-          {project.title}
-        </h2>
-
-        {/* Client */}
-        <p className="mb-4 text-sm text-ink-soft sm:mb-5">
-          {project.client}&nbsp;·&nbsp;{project.location}
-        </p>
-
-        {/* Description */}
-        <p className="mb-5 text-[15px] leading-[1.7] text-ink-soft sm:text-base">
-          {project.description}
-        </p>
-
-        {/* Result metric */}
-        {project.result && (
-          <div className="mb-5 inline-flex items-center gap-2.5 self-start rounded-band border border-blue/20 bg-blue/5 px-4 py-2.5 sm:px-5 sm:py-3">
-            <span className="text-blue" aria-hidden>↗</span>
-            <span className="text-[13px] font-semibold text-blue sm:text-[14px]">{project.result}</span>
-          </div>
-        )}
-
-        {/* Tech tags */}
-        <div className="flex flex-wrap gap-1.5 sm:gap-2">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-pill border border-line bg-card px-3 py-1 text-[11px] font-medium text-ink sm:text-[12px]"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Image / placeholder */}
-      <div className={`flex items-stretch ${flip ? 'lg:order-1' : 'lg:order-2'}`}>
+      {/* Thumbnail */}
+      <div className="relative aspect-[16/10] overflow-hidden bg-[#f0f0ec]">
         {project.image ? (
           <img
             src={project.image}
             alt={project.title}
-            className="h-full w-full rounded-band object-cover shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] transition-transform duration-700 group-hover:scale-[1.02]"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
           />
         ) : (
-          <div className="flex min-h-[220px] w-full flex-col items-center justify-center gap-3 rounded-band border border-dashed border-line bg-card text-center transition-colors duration-300 group-hover:border-ink/30 group-hover:bg-[#f8f8f5] sm:min-h-[280px] md:min-h-[320px] lg:min-h-0">
-            <div className="rounded-full border border-line bg-paper p-4">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-ink-soft opacity-40">
-                <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="1.5" />
-                <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" strokeWidth="1.5" />
-                <path d="M3 16l5-5 4 4 3-3 6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-            <span className="font-mono text-[11px] text-ink-soft sm:text-[12px]">screenshot coming soon</span>
+          <div className="flex h-full w-full items-center justify-center">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="opacity-20">
+              <rect x="3" y="3" width="18" height="18" rx="3" stroke="#0a0a0c" strokeWidth="1.5" />
+              <circle cx="8.5" cy="8.5" r="1.5" stroke="#0a0a0c" strokeWidth="1.5" />
+              <path d="M3 16l5-5 4 4 3-3 6 6" stroke="#0a0a0c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </div>
         )}
+        <span
+          className={`absolute right-3 top-3 rounded-pill border px-2.5 py-0.5 text-[11px] font-semibold ${STATUS_STYLES[project.status] ?? STATUS_STYLES.live}`}
+        >
+          {project.status}
+        </span>
+      </div>
+
+      {/* Info */}
+      <div className="p-5 sm:p-6">
+        <div className="mb-2.5 flex items-center gap-2">
+          <span className="font-mono text-[11px] text-blue">{String(project.id).padStart(2, '0')}</span>
+          <span className="rounded-pill border border-line bg-paper px-2.5 py-0.5 text-[11px] font-medium text-ink-soft">
+            {project.category}
+          </span>
+        </div>
+        <h3 className="mb-1 text-[17px] font-semibold leading-[1.2] tracking-tight2 transition-colors duration-200 group-hover:text-blue sm:text-[18px]">
+          {project.title}
+        </h3>
+        <p className="mb-3 text-[13px] text-ink-soft">
+          {project.client}&nbsp;·&nbsp;{project.location}
+          {project.year && <>&nbsp;·&nbsp;{project.year}</>}
+        </p>
+        <p className="text-[13px] leading-[1.6] text-ink-soft">{project.description}</p>
       </div>
     </Reveal>
+  )
+}
+
+/* ── Modal ───────────────────────────────────────────────────────── */
+function ProjectModal({ project, onClose }) {
+  useEffect(() => {
+    const handler = (e) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [onClose])
+
+  return (
+    <div
+      className="fixed inset-0 z-[1200] flex items-center justify-center p-4 sm:p-6 md:p-10"
+      style={{ background: 'rgba(10,10,12,0.65)', backdropFilter: 'blur(6px)' }}
+      onClick={onClose}
+    >
+      <div
+        className="relative flex max-h-[90vh] w-full max-w-[680px] flex-col overflow-hidden rounded-band bg-card shadow-[0_40px_100px_-20px_rgba(0,0,0,0.3)] md:max-w-[860px] lg:max-w-[1000px]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close */}
+        <button
+          onClick={onClose}
+          aria-label="Close"
+          className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-line bg-paper text-ink-soft transition-all duration-200 hover:border-ink hover:text-ink"
+        >
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+          </svg>
+        </button>
+
+        {/* Scrollable body */}
+        <div className="overflow-y-auto">
+
+          {/* Screenshot */}
+          {project.image && (
+            <div className="w-full overflow-hidden bg-[#f0f0ec]">
+              {project.link ? (
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="block w-full">
+                  <img src={project.image} alt={project.title} className="w-full object-contain" />
+                </a>
+              ) : (
+                <img src={project.image} alt={project.title} className="w-full object-contain" />
+              )}
+            </div>
+          )}
+
+          <div className="p-6 sm:p-8">
+            {/* Badges */}
+            <div className="mb-4 flex flex-wrap items-center gap-2">
+              <span className="rounded-pill border border-line bg-paper px-3 py-1 text-[12px] font-medium text-ink-soft">
+                {project.category}
+              </span>
+              <span className={`rounded-pill border px-3 py-1 text-[12px] font-semibold ${STATUS_STYLES[project.status] ?? STATUS_STYLES.live}`}>
+                {project.status}
+              </span>
+            </div>
+
+            {/* Title */}
+            <h2 className="mb-1 text-[22px] font-semibold leading-[1.15] tracking-tight2 sm:text-[26px]">
+              {project.title}
+            </h2>
+
+            {/* Meta */}
+            <p className="mb-6 text-[13px] text-ink-soft">
+              {project.client}&nbsp;·&nbsp;{project.location}
+              {project.year && <>&nbsp;·&nbsp;{project.year}</>}
+            </p>
+
+            <div className="mb-6 h-px bg-line" />
+
+            {/* Problem */}
+            {project.problem && (
+              <div className="mb-6">
+                <p className="mb-2.5 font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-blue">
+                  // The Problem
+                </p>
+                <p className="text-[15px] leading-[1.75] text-ink-soft">{project.problem}</p>
+              </div>
+            )}
+
+            {/* What we built */}
+            {project.built && (
+              <div className="mb-6">
+                <p className="mb-2.5 font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-blue">
+                  // What We Built
+                </p>
+                <p className="text-[15px] leading-[1.75] text-ink-soft">{project.built}</p>
+              </div>
+            )}
+
+            {/* Result */}
+            {project.result && (
+              <div className="mb-6 flex">
+                <div className="inline-flex items-center gap-2.5 rounded-band border border-blue/20 bg-blue/5 px-4 py-2.5">
+                  <span className="text-blue" aria-hidden>↗</span>
+                  <span className="text-[14px] font-semibold text-blue">{project.result}</span>
+                </div>
+              </div>
+            )}
+
+            {/* Tags */}
+            <div className="mb-6 flex flex-wrap gap-1.5">
+              {project.tags.map((tag) => (
+                <span key={tag} className="rounded-pill border border-line bg-paper px-3 py-1 text-[12px] font-medium text-ink">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {/* Live link */}
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary inline-flex"
+              >
+                <span>Visit live site</span>
+                <span className="arrow">↗</span>
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
