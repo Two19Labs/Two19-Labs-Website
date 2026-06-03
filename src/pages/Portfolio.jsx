@@ -275,6 +275,19 @@ function ProjectModal({ project, onClose }) {
                 <span className="arrow">↗</span>
               </a>
             )}
+
+            {/* Project-specific CTA */}
+            {project.cta && (
+              <div className="mt-8 border-t border-line pt-8">
+                <a
+                  href={project.cta.href}
+                  className="btn-primary inline-flex w-full justify-center"
+                >
+                  <span>{project.cta.label}</span>
+                  <span className="arrow">↗</span>
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </div>

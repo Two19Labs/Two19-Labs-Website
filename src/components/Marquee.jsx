@@ -1,8 +1,8 @@
 import { clients } from '../data/content'
 
 export default function Marquee() {
-  // duplicate the list so the -50% scroll loops seamlessly
-  const items = [...clients, ...clients]
+  // quadruple so fewer logos still fill the viewport with no gap
+  const items = [...clients, ...clients, ...clients, ...clients]
   return (
     <section className="pt-24 md:pt-28">
       <div className="px-5 sm:px-6 md:px-12">
@@ -11,7 +11,7 @@ export default function Marquee() {
         </div>
       </div>
       <div className="group relative overflow-hidden border-y border-line bg-paper py-[34px]">
-        <div className="flex w-max items-center gap-20 [animation:scroll_18s_linear_infinite] group-hover:[animation-play-state:paused] md:[animation:scroll_28s_linear_infinite]">
+        <div className="flex w-max items-center gap-20 will-change-transform [animation:scroll_20s_linear_infinite] [animation-delay:-5s] group-hover:[animation-play-state:paused] md:[animation:scroll_20s_linear_infinite]">
           {items.map((c, i) => (
             <div key={i} className="flex shrink-0 items-center justify-center">
               {c.logo ? (

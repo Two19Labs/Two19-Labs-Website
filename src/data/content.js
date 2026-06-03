@@ -25,7 +25,6 @@ export const clients = [
   { name: 'Ghoomar Village', logo: '/clients/village-logo.png' },
   { name: 'Ashirvad', logo: '/clients/Ashirvad.svg' },
   { name: 'ITC Limited', logo: '/clients/ITC_Limited_Logo.svg.png' },
-  { name: "Masters' Union", logo: '/clients/masters-union.png' },
   { name: 'University of Delhi', logo: '/clients/university-of-delhi.png' },
   { name: 'Cafe Delhi Heights', logo: '/clients/cafe-delhi-heights.png' },
 ]
@@ -432,6 +431,7 @@ export const portfolioProjects = [
     tags: ['ERP', 'React', 'Node.js', 'PostgreSQL', 'SaaS'],
     status: 'live',
     image: '/portfolio/gawdaam.png',
+    cta: { label: 'Build one for your restaurant', href: 'tel:+919834722416' },
   },
   {
     id: 7,

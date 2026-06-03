@@ -31,12 +31,12 @@ export default {
       },
       keyframes: {
         scroll: {
-          to: { transform: 'translateX(-50%)' },
+          to: { transform: 'translateX(-25%)' },
         },
       },
       animation: {
-        scroll: 'scroll 28s linear infinite',
-        'scroll-ind': 'scroll 32s linear infinite',
+        scroll: 'scroll 20s linear infinite',
+        'scroll-ind': 'scroll 24s linear infinite',
       },
     },
   },
