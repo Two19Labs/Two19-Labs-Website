@@ -9,7 +9,11 @@
       "Bash(python -c \"from PIL import Image; print\\('PIL ok'\\)\")",
       "PowerShell(python -c \"import rembg; print\\('rembg ok'\\)\" 2>&1; python -c \"from PIL import Image; print\\('PIL ok'\\)\" 2>&1)",
       "PowerShell(py *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(git commit -m '@ *)",
+      "Bash(npm install *)",
+      "Bash(ls public/clients ../)",
+      "Bash(ls public/robots.txt public/sitemap.xml)"
     ]
   }
 }
