@@ -24,7 +24,7 @@ export default function WhatWeDo() {
       <div className="container-x">
         <Reveal as="p" className="tag">what we do</Reveal>
         <Reveal as="h2" delay={70} className="sec-h">
-          We make your business unstoppable.
+          We make your business <span className="accent-italic font-normal text-blue" style={{ fontSize: '1.05em' }}>unstoppable.</span>
         </Reveal>
         <Reveal as="p" delay={140} className="sec-p mt-8">
           We design, develop, and maintain fully custom software solutions that align precisely with

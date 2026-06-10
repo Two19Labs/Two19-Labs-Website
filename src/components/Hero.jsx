@@ -1,23 +1,32 @@
 import { motion } from 'framer-motion'
 import { LampContainer } from '@/components/ui/lamp'
+import { useReady } from '../hooks/useReady'
 
 export default function Hero() {
+  // Wait for the preloader. `ready` flips true the moment the curtain starts
+  // lifting, so the hero plays its entrance underneath and is mid-reveal as
+  // the preloader clears.
+  const ready = useReady()
+  const hidden = { headline: { opacity: 0, y: 80 }, line: { opacity: 0, y: 40 } }
+  const shown = { opacity: 1, y: 0 }
+
   return (
     <header id="home" data-nav-dark>
       <LampContainer>
         <motion.h1
-          initial={{ opacity: 0.5, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8, ease: 'easeInOut' }}
-          className="bg-gradient-to-br from-slate-200 to-slate-500 bg-clip-text py-4 text-center text-4xl font-bold tracking-tightest text-transparent md:text-7xl"
+          initial={hidden.headline}
+          animate={ready ? shown : hidden.headline}
+          transition={{ delay: 0.6, duration: 0.75, ease: [0.2, 0.65, 0.2, 1] }}
+          className="display-brand bg-gradient-to-br from-slate-200 to-slate-500 bg-clip-text py-4 text-center text-5xl text-transparent md:text-8xl"
         >
-          Build smarter. <br /> Scale faster.
+          Build Smarter. <br />
+          Scale <span className="text-blue" style={{ WebkitTextFillColor: '#2540ff' }}>Faster.</span>
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.8, ease: 'easeInOut' }}
+          initial={hidden.line}
+          animate={ready ? shown : hidden.line}
+          transition={{ delay: 0.85, duration: 0.7, ease: [0.2, 0.65, 0.2, 1] }}
           className="mx-auto mt-4 max-w-xl text-center text-[15px] leading-[1.6] text-slate-400 md:text-lg"
         >
           Two19 Labs builds custom software, AI automations, and internal tools from scratch —
@@ -25,9 +34,9 @@ export default function Hero() {
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.75, duration: 0.8, ease: 'easeInOut' }}
+          initial={hidden.line}
+          animate={ready ? shown : hidden.line}
+          transition={{ delay: 1.0, duration: 0.7, ease: [0.2, 0.65, 0.2, 1] }}
           className="mt-9 flex flex-wrap items-center justify-center gap-4"
         >
           <a

@@ -27,6 +27,16 @@
     overflow-x: clip;
   }
 
+  /* Hard scroll lock — covers html + body + touch + keyboard nudges.
+     Applied by Preloader during the intro sequence. */
+  html.scroll-locked,
+  html.scroll-locked body {
+    overflow: hidden !important;
+    height: 100% !important;
+    touch-action: none !important;
+    overscroll-behavior: none !important;
+  }
+
   ::selection {
     background: #2540ff;
     color: #fff;
@@ -36,15 +46,34 @@
     width: 12px;
   }
   ::-webkit-scrollbar-track {
-    background: #ecece8;
+    background: #e8e7e2;
   }
   ::-webkit-scrollbar-thumb {
     background: #cfcfc8;
     border-radius: 99px;
-    border: 3px solid #ecece8;
+    border: 3px solid #e8e7e2;
   }
   ::-webkit-scrollbar-thumb:hover {
     background: #b9b9b0;
+  }
+}
+
+/* Brand accent — Instrument Serif italic lowercase.
+   Per brand guidelines: "used sparingly for emphasis". */
+@layer components {
+  .accent-italic {
+    @apply font-serif italic lowercase;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* Brand display — Space Grotesk Black, ALL CAPS, tight leading.
+     Apply to hero / hero-class headlines. */
+  .display-brand {
+    @apply font-sans uppercase;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 0.92;
   }
 }
 
@@ -66,7 +95,7 @@
   }
 
   .sec-h {
-    @apply max-w-[880px] font-semibold tracking-tight2;
+    @apply max-w-[880px] font-bold tracking-tight2;
     font-size: clamp(32px, 5.5vw, 72px);
     line-height: 1.02;
   }
